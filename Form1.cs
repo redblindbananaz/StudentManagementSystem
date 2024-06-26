@@ -3,6 +3,8 @@ namespace StudentManagementSystem
     public partial class Form1 : Form
     {
         private List<Student> students;
+        private bool isFormLoaded = false;
+        private int selectedRowIndex = -1;
         public Form1()
         {
             InitializeComponent();
@@ -16,7 +18,7 @@ namespace StudentManagementSystem
             this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
             isFormLoaded = true;
         }
-        private bool isFormLoaded = false;
+        
         public void InitializeStudentData()
         {
             students = new List<Student>
@@ -35,11 +37,21 @@ namespace StudentManagementSystem
             if (!isFormLoaded)
 
                 return;
-
-            
             if (dgvStudents.SelectedRows.Count > 0)
             {
-                
+                 selectedRowIndex = dgvStudents.SelectedRows[0].Index;
+            }
+
+            
+            
+        
+        }
+
+        private void btnSelect_Click(object sender, EventArgs e)
+        {
+            if (selectedRowIndex >= 0 && selectedRowIndex <dgvStudents.Rows.Count)
+            {
+
                 var selectedRow = dgvStudents.SelectedRows[0];
                 int selectedId = (int)selectedRow.Cells[0].Value;
                 var selectedStudent = students.FirstOrDefault(s => s.Id == selectedId);
@@ -64,13 +76,7 @@ namespace StudentManagementSystem
             {
                 MessageBox.Show("Selected student is null");
             }
-        
-        }
 
-        private void btnSelect_Click(object sender, EventArgs e)
-        {
-            dgvStudents_SelectionChanged(sender, e);
-        
         }
 
         private void PopulateStudentList()
