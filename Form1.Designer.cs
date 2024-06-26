@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             grpStudentDatabase = new GroupBox();
+            txtErrorSearch = new TextBox();
             labelSearchStudent = new Label();
             btnShowAll = new Button();
             dgvStudents = new DataGridView();
@@ -65,13 +66,18 @@
             label1 = new Label();
             btnExit = new Button();
             btnNewStudent = new Button();
+            panel1 = new Panel();
+            panel2 = new Panel();
             grpStudentDatabase.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvStudents).BeginInit();
             grpStudentDetails.SuspendLayout();
+            panel1.SuspendLayout();
+            panel2.SuspendLayout();
             SuspendLayout();
             // 
             // grpStudentDatabase
             // 
+            grpStudentDatabase.Controls.Add(txtErrorSearch);
             grpStudentDatabase.Controls.Add(labelSearchStudent);
             grpStudentDatabase.Controls.Add(btnShowAll);
             grpStudentDatabase.Controls.Add(dgvStudents);
@@ -80,12 +86,22 @@
             grpStudentDatabase.Controls.Add(textBox1);
             grpStudentDatabase.Font = new Font("Segoe UI", 13F);
             grpStudentDatabase.ForeColor = SystemColors.ControlDarkDark;
-            grpStudentDatabase.Location = new Point(12, 75);
+            grpStudentDatabase.Location = new Point(12, 9);
             grpStudentDatabase.Name = "grpStudentDatabase";
             grpStudentDatabase.Size = new Size(896, 365);
             grpStudentDatabase.TabIndex = 1;
             grpStudentDatabase.TabStop = false;
             grpStudentDatabase.Text = "Student Database";
+            // 
+            // txtErrorSearch
+            // 
+            txtErrorSearch.BackColor = SystemColors.Control;
+            txtErrorSearch.BorderStyle = BorderStyle.None;
+            txtErrorSearch.ForeColor = Color.Red;
+            txtErrorSearch.Location = new Point(8, 327);
+            txtErrorSearch.Name = "txtErrorSearch";
+            txtErrorSearch.Size = new Size(715, 24);
+            txtErrorSearch.TabIndex = 7;
             // 
             // labelSearchStudent
             // 
@@ -116,8 +132,8 @@
             // 
             dgvStudents.AllowUserToAddRows = false;
             dgvStudents.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dgvStudents.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvStudents.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dgvStudents.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvStudents.Columns.AddRange(new DataGridViewColumn[] { Id, FullName, Email, Class, Campus });
             dgvStudents.Location = new Point(8, 80);
@@ -162,7 +178,7 @@
             Campus.HeaderText = "Campus";
             Campus.Name = "Campus";
             Campus.ReadOnly = true;
-            Campus.Width = 200;
+            Campus.Width = 179;
             // 
             // btnSelect
             // 
@@ -220,7 +236,7 @@
             grpStudentDetails.Controls.Add(btnDelete);
             grpStudentDetails.Font = new Font("Segoe UI", 20F);
             grpStudentDetails.ForeColor = SystemColors.ControlDarkDark;
-            grpStudentDetails.Location = new Point(12, 474);
+            grpStudentDetails.Location = new Point(12, 19);
             grpStudentDetails.Name = "grpStudentDetails";
             grpStudentDetails.Size = new Size(896, 262);
             grpStudentDetails.TabIndex = 2;
@@ -497,16 +513,32 @@
             btnNewStudent.Text = "New Student";
             btnNewStudent.UseVisualStyleBackColor = false;
             // 
+            // panel1
+            // 
+            panel1.Controls.Add(grpStudentDatabase);
+            panel1.Location = new Point(0, 62);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(925, 389);
+            panel1.TabIndex = 6;
+            // 
+            // panel2
+            // 
+            panel2.Controls.Add(grpStudentDetails);
+            panel2.Location = new Point(0, 457);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(925, 302);
+            panel2.TabIndex = 7;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(924, 809);
+            Controls.Add(panel2);
+            Controls.Add(panel1);
             Controls.Add(btnNewStudent);
             Controls.Add(btnExit);
             Controls.Add(label1);
-            Controls.Add(grpStudentDetails);
-            Controls.Add(grpStudentDatabase);
             Name = "Form1";
             Text = "Form1";
             grpStudentDatabase.ResumeLayout(false);
@@ -514,6 +546,8 @@
             ((System.ComponentModel.ISupportInitialize)dgvStudents).EndInit();
             grpStudentDetails.ResumeLayout(false);
             grpStudentDetails.PerformLayout();
+            panel1.ResumeLayout(false);
+            panel2.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -548,12 +582,15 @@
         private Button btnExit;
         private Button btnNewStudent;
         private DataGridView dgvStudents;
+        private Button btnShowAll;
+        private Label labelSearchStudent;
+        private Panel panel1;
         private DataGridViewTextBoxColumn Id;
         private DataGridViewTextBoxColumn FullName;
         private DataGridViewTextBoxColumn Email;
         private DataGridViewTextBoxColumn Class;
         private DataGridViewTextBoxColumn Campus;
-        private Button btnShowAll;
-        private Label labelSearchStudent;
+        private Panel panel2;
+        private TextBox txtErrorSearch;
     }
 }

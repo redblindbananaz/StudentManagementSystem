@@ -182,13 +182,23 @@ namespace StudentManagementSystem
 
             if (string.IsNullOrWhiteSpace(searchTerm))
             {
-
+                //If the search is empty, show all students
                 filteredStudents = new BindingList<Student>(students);
+                txtErrorSearch.Text = string.Empty;
 
             }
             else
             {
+                // Otherwise search based on the search term
                 filteredStudents = new BindingList<Student>(students.Where(s => s.FirstName.ToLower().Contains(searchTerm) || s.LastName.ToLower().Contains(searchTerm)).ToList());
+                if (filteredStudents.Count == 0)
+                {
+                    txtErrorSearch.Text = $"* Sorry, No students found for: {searchTerm} Search";
+                }
+                else
+                {
+                    txtErrorSearch.Text = string.Empty;
+                }
             }
             ClearForm();
             dgvStudents.Rows.Clear();
@@ -203,6 +213,7 @@ namespace StudentManagementSystem
             ClearForm();
             PopulateStudentList();
             textBox1.Text = string.Empty;
+            txtErrorSearch.Text =string.Empty;
         }
     }
 }
