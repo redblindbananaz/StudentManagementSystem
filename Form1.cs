@@ -9,6 +9,9 @@ namespace StudentManagementSystem
             InitializeStudentData();
             PopulateStudentList();
 
+            //Need to set the selection mode to fullrowselect according to microsoft documentation
+            dgvStudents.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
             this.dgvStudents.SelectionChanged += new System.EventHandler(this.dgvStudents_SelectionChanged);
             this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
             isFormLoaded = true;
@@ -36,15 +39,13 @@ namespace StudentManagementSystem
             
             if (dgvStudents.SelectedRows.Count > 0)
             {
-                MessageBox.Show("Selected row count is greater than 0");
+                
                 var selectedRow = dgvStudents.SelectedRows[0];
-                MessageBox.Show($"Selected row index:{selectedRow}");
                 int selectedId = (int)selectedRow.Cells[0].Value;
                 var selectedStudent = students.FirstOrDefault(s => s.Id == selectedId);
 
                 if (selectedStudent != null)
                 {
-                    MessageBox.Show($"Selected Student:{selectedStudent.FirstName}");
                     txtFirstName.Text = selectedStudent.FirstName;
                     txtLastName.Text = selectedStudent.LastName;
                     txtAge.Text = selectedStudent.Age;
@@ -68,7 +69,6 @@ namespace StudentManagementSystem
 
         private void btnSelect_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Select button clicked");
             dgvStudents_SelectionChanged(sender, e);
         
         }
