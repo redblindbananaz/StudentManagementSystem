@@ -97,7 +97,7 @@
             dgvStudents.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             dgvStudents.Size = new Size(882, 241);
             dgvStudents.TabIndex = 4;
-            dgvStudents.SelectionChanged +=dgvStudents_SelectionChanged;
+            dgvStudents.SelectionChanged += dgvStudents_SelectionChanged;
             // 
             // Id
             // 
@@ -200,84 +200,102 @@
             // 
             // txtExtraMural
             // 
+            txtExtraMural.BorderStyle = BorderStyle.None;
+            txtExtraMural.Cursor = Cursors.No;
             txtExtraMural.Font = new Font("Segoe UI", 14F);
             txtExtraMural.Location = new Point(604, 120);
             txtExtraMural.Name = "txtExtraMural";
-            txtExtraMural.Size = new Size(260, 32);
+            txtExtraMural.ReadOnly = true;
+            txtExtraMural.Size = new Size(260, 25);
             txtExtraMural.TabIndex = 19;
-            txtExtraMural.UseWaitCursor = true;
             // 
             // txtCampus
             // 
+            txtCampus.BorderStyle = BorderStyle.None;
+            txtCampus.Cursor = Cursors.No;
             txtCampus.Font = new Font("Segoe UI", 14F);
             txtCampus.Location = new Point(604, 85);
             txtCampus.Name = "txtCampus";
-            txtCampus.Size = new Size(260, 32);
+            txtCampus.ReadOnly = true;
+            txtCampus.Size = new Size(260, 25);
             txtCampus.TabIndex = 18;
-            txtCampus.UseWaitCursor = true;
             // 
             // txtClass
             // 
+            txtClass.BorderStyle = BorderStyle.None;
+            txtClass.Cursor = Cursors.No;
             txtClass.Font = new Font("Segoe UI", 14F);
             txtClass.Location = new Point(604, 50);
             txtClass.Name = "txtClass";
-            txtClass.Size = new Size(260, 32);
+            txtClass.ReadOnly = true;
+            txtClass.Size = new Size(260, 25);
             txtClass.TabIndex = 17;
-            txtClass.UseWaitCursor = true;
             // 
             // txtEmail
             // 
+            txtEmail.BorderStyle = BorderStyle.None;
+            txtEmail.Cursor = Cursors.No;
             txtEmail.Font = new Font("Segoe UI", 14F);
             txtEmail.Location = new Point(159, 224);
             txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(260, 32);
+            txtEmail.ReadOnly = true;
+            txtEmail.Size = new Size(260, 25);
             txtEmail.TabIndex = 16;
-            txtEmail.UseWaitCursor = true;
             // 
             // txtPhone
             // 
+            txtPhone.BorderStyle = BorderStyle.None;
+            txtPhone.Cursor = Cursors.No;
             txtPhone.Font = new Font("Segoe UI", 14F);
             txtPhone.Location = new Point(159, 190);
             txtPhone.Name = "txtPhone";
-            txtPhone.Size = new Size(260, 32);
+            txtPhone.ReadOnly = true;
+            txtPhone.Size = new Size(260, 25);
             txtPhone.TabIndex = 15;
-            txtPhone.UseWaitCursor = true;
             // 
             // txtGender
             // 
+            txtGender.BorderStyle = BorderStyle.None;
+            txtGender.Cursor = Cursors.No;
             txtGender.Font = new Font("Segoe UI", 14F);
             txtGender.Location = new Point(159, 155);
             txtGender.Name = "txtGender";
-            txtGender.Size = new Size(260, 32);
+            txtGender.ReadOnly = true;
+            txtGender.Size = new Size(260, 25);
             txtGender.TabIndex = 14;
-            txtGender.UseWaitCursor = true;
             // 
             // txtAge
             // 
+            txtAge.BorderStyle = BorderStyle.None;
+            txtAge.Cursor = Cursors.No;
             txtAge.Font = new Font("Segoe UI", 14F);
             txtAge.Location = new Point(159, 120);
             txtAge.Name = "txtAge";
-            txtAge.Size = new Size(260, 32);
+            txtAge.ReadOnly = true;
+            txtAge.Size = new Size(260, 25);
             txtAge.TabIndex = 13;
-            txtAge.UseWaitCursor = true;
             // 
             // txtLastName
             // 
+            txtLastName.BorderStyle = BorderStyle.None;
+            txtLastName.Cursor = Cursors.No;
             txtLastName.Font = new Font("Segoe UI", 14F);
             txtLastName.Location = new Point(159, 85);
             txtLastName.Name = "txtLastName";
-            txtLastName.Size = new Size(260, 32);
+            txtLastName.ReadOnly = true;
+            txtLastName.Size = new Size(260, 25);
             txtLastName.TabIndex = 12;
-            txtLastName.UseWaitCursor = true;
             // 
             // txtFirstName
             // 
+            txtFirstName.BorderStyle = BorderStyle.None;
+            txtFirstName.Cursor = Cursors.No;
             txtFirstName.Font = new Font("Segoe UI", 14F);
             txtFirstName.Location = new Point(159, 50);
             txtFirstName.Name = "txtFirstName";
-            txtFirstName.Size = new Size(260, 32);
+            txtFirstName.ReadOnly = true;
+            txtFirstName.Size = new Size(260, 25);
             txtFirstName.TabIndex = 11;
-            txtFirstName.UseWaitCursor = true;
             // 
             // labelExtraMural
             // 
@@ -404,6 +422,7 @@
             btnDelete.UseVisualStyleBackColor = true;
             btnDelete.UseWaitCursor = true;
             btnDelete.Visible = false;
+            btnDelete.Click += btnDelete_Click;
             // 
             // label1
             // 

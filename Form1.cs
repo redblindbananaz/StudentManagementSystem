@@ -14,7 +14,7 @@ namespace StudentManagementSystem
             //Need to set the selection mode to fullrowselect according to microsoft documentation
             dgvStudents.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
-            
+            // Flag to check if form is loaded while testing with message boxes
             isFormLoaded = true;
         }
 
@@ -40,9 +40,6 @@ namespace StudentManagementSystem
             {
                 selectedRowIndex = dgvStudents.SelectedRows[0].Index;
             }
-
-
-
 
         }
 
@@ -134,6 +131,46 @@ namespace StudentManagementSystem
                 return value ? "Yes" : "No";
             }
         }
+        private void ClearForm()
+        {
+            txtFirstName.Text = string.Empty;
+            txtLastName.Text = string.Empty;
+            txtAge.Text = string.Empty;
+            txtGender.Text = string.Empty;
+            txtPhone.Text = string.Empty;
+            txtEmail.Text = string.Empty;
+            txtClass.Text = string.Empty;
+            txtCampus.Text = string.Empty;
+            txtExtraMural.Text = string.Empty;
 
+            btnEdit.Enabled = false;
+            btnEdit.Visible = false;
+            btnDelete.Enabled = false;
+            btnDelete.Visible = false;
+        }
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (selectedRowIndex >= 0 && selectedRowIndex < dgvStudents.Rows.Count)
+            {
+                var selectedRow = dgvStudents.SelectedRows[0];
+                int selectedId = (int)selectedRow.Cells[0].Value;
+                var studentToRemove = students.FirstOrDefault(s => s.Id == selectedId);
+
+                if (studentToRemove != null)
+                {
+                    DialogResult dialogResult = MessageBox.Show($"Are you sure you want to delete this student: {studentToRemove.FullName}?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        students.Remove(studentToRemove);
+                        PopulateStudentList();
+                        ClearForm();
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a student to delete.", "Delete", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
     }
 }
