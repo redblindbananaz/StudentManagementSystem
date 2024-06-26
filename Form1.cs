@@ -1,3 +1,5 @@
+using System.ComponentModel;
+
 namespace StudentManagementSystem
 {
     public partial class Form1 : Form
@@ -5,6 +7,7 @@ namespace StudentManagementSystem
         private List<Student> students;
         private bool isFormLoaded = false;
         private int selectedRowIndex = -1;
+        private BindingList<Student> filteredStudents;
         public Form1()
         {
             InitializeComponent();
@@ -79,7 +82,7 @@ namespace StudentManagementSystem
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Are you sure you want to exit?", "Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult dialogResult = MessageBox.Show("Are you sure you want to exit?", "Leaving the Student Management System?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dialogResult == DialogResult.Yes)
             {
                 Application.Exit();
@@ -171,6 +174,35 @@ namespace StudentManagementSystem
             {
                 MessageBox.Show("Please select a student to delete.", "Delete", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            string searchTerm = textBox1.Text.ToLower();
+
+            if (string.IsNullOrWhiteSpace(searchTerm))
+            {
+
+                filteredStudents = new BindingList<Student>(students);
+
+            }
+            else
+            {
+                filteredStudents = new BindingList<Student>(students.Where(s => s.FirstName.ToLower().Contains(searchTerm) || s.LastName.ToLower().Contains(searchTerm)).ToList());
+            }
+            ClearForm();
+            dgvStudents.Rows.Clear();
+            foreach (var student in filteredStudents)
+            {
+                dgvStudents.Rows.Add(student.Id, student.FullName, student.Email, student.ClassName, student.Campus);
+            }
+        }
+
+        private void btnShowAll_Click(object sender, EventArgs e)
+        {
+            ClearForm();
+            PopulateStudentList();
+            textBox1.Text = string.Empty;
         }
     }
 }

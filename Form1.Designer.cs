@@ -28,8 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             grpStudentDatabase = new GroupBox();
+            labelSearchStudent = new Label();
+            btnShowAll = new Button();
             dgvStudents = new DataGridView();
             Id = new DataGridViewTextBoxColumn();
             FullName = new DataGridViewTextBoxColumn();
@@ -70,6 +72,8 @@
             // 
             // grpStudentDatabase
             // 
+            grpStudentDatabase.Controls.Add(labelSearchStudent);
+            grpStudentDatabase.Controls.Add(btnShowAll);
             grpStudentDatabase.Controls.Add(dgvStudents);
             grpStudentDatabase.Controls.Add(btnSelect);
             grpStudentDatabase.Controls.Add(btnSearch);
@@ -83,12 +87,37 @@
             grpStudentDatabase.TabStop = false;
             grpStudentDatabase.Text = "Student Database";
             // 
+            // labelSearchStudent
+            // 
+            labelSearchStudent.AutoSize = true;
+            labelSearchStudent.Location = new Point(170, 45);
+            labelSearchStudent.Name = "labelSearchStudent";
+            labelSearchStudent.Size = new Size(134, 25);
+            labelSearchStudent.TabIndex = 6;
+            labelSearchStudent.Text = "Search Student:";
+            // 
+            // btnShowAll
+            // 
+            btnShowAll.BackColor = SystemColors.Control;
+            btnShowAll.BackgroundImageLayout = ImageLayout.Center;
+            btnShowAll.Cursor = Cursors.Hand;
+            btnShowAll.Font = new Font("Segoe UI Semibold", 12.75F, FontStyle.Bold | FontStyle.Italic | FontStyle.Underline, GraphicsUnit.Point, 0);
+            btnShowAll.ForeColor = SystemColors.ControlDarkDark;
+            btnShowAll.Location = new Point(790, 42);
+            btnShowAll.Name = "btnShowAll";
+            btnShowAll.Size = new Size(100, 30);
+            btnShowAll.TabIndex = 5;
+            btnShowAll.Text = "Show All";
+            btnShowAll.UseMnemonic = false;
+            btnShowAll.UseVisualStyleBackColor = false;
+            btnShowAll.Click += btnShowAll_Click;
+            // 
             // dgvStudents
             // 
             dgvStudents.AllowUserToAddRows = false;
             dgvStudents.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dgvStudents.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dgvStudents.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             dgvStudents.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvStudents.Columns.AddRange(new DataGridViewColumn[] { Id, FullName, Email, Class, Campus });
             dgvStudents.Location = new Point(8, 80);
@@ -149,12 +178,14 @@
             // btnSearch
             // 
             btnSearch.Font = new Font("Segoe UI", 14F);
-            btnSearch.Location = new Point(604, 42);
+            btnSearch.Location = new Point(593, 41);
             btnSearch.Name = "btnSearch";
             btnSearch.Size = new Size(100, 32);
             btnSearch.TabIndex = 2;
             btnSearch.Text = "Search";
+            btnSearch.UseCompatibleTextRendering = true;
             btnSearch.UseVisualStyleBackColor = true;
+            btnSearch.Click += btnSearch_Click;
             // 
             // textBox1
             // 
@@ -162,7 +193,6 @@
             textBox1.Font = new Font("Segoe UI", 13F);
             textBox1.Location = new Point(307, 42);
             textBox1.Name = "textBox1";
-            textBox1.PlaceholderText = "Search By Student Name";
             textBox1.Size = new Size(280, 31);
             textBox1.TabIndex = 1;
             // 
@@ -208,6 +238,7 @@
             txtExtraMural.ReadOnly = true;
             txtExtraMural.Size = new Size(260, 25);
             txtExtraMural.TabIndex = 19;
+            txtExtraMural.UseWaitCursor = true;
             // 
             // txtCampus
             // 
@@ -219,6 +250,7 @@
             txtCampus.ReadOnly = true;
             txtCampus.Size = new Size(260, 25);
             txtCampus.TabIndex = 18;
+            txtCampus.UseWaitCursor = true;
             // 
             // txtClass
             // 
@@ -230,6 +262,7 @@
             txtClass.ReadOnly = true;
             txtClass.Size = new Size(260, 25);
             txtClass.TabIndex = 17;
+            txtClass.UseWaitCursor = true;
             // 
             // txtEmail
             // 
@@ -241,6 +274,7 @@
             txtEmail.ReadOnly = true;
             txtEmail.Size = new Size(260, 25);
             txtEmail.TabIndex = 16;
+            txtEmail.UseWaitCursor = true;
             // 
             // txtPhone
             // 
@@ -252,6 +286,7 @@
             txtPhone.ReadOnly = true;
             txtPhone.Size = new Size(260, 25);
             txtPhone.TabIndex = 15;
+            txtPhone.UseWaitCursor = true;
             // 
             // txtGender
             // 
@@ -263,6 +298,7 @@
             txtGender.ReadOnly = true;
             txtGender.Size = new Size(260, 25);
             txtGender.TabIndex = 14;
+            txtGender.UseWaitCursor = true;
             // 
             // txtAge
             // 
@@ -274,6 +310,7 @@
             txtAge.ReadOnly = true;
             txtAge.Size = new Size(260, 25);
             txtAge.TabIndex = 13;
+            txtAge.UseWaitCursor = true;
             // 
             // txtLastName
             // 
@@ -285,6 +322,7 @@
             txtLastName.ReadOnly = true;
             txtLastName.Size = new Size(260, 25);
             txtLastName.TabIndex = 12;
+            txtLastName.UseWaitCursor = true;
             // 
             // txtFirstName
             // 
@@ -296,6 +334,7 @@
             txtFirstName.ReadOnly = true;
             txtFirstName.Size = new Size(260, 25);
             txtFirstName.TabIndex = 11;
+            txtFirstName.UseWaitCursor = true;
             // 
             // labelExtraMural
             // 
@@ -514,5 +553,7 @@
         private DataGridViewTextBoxColumn Email;
         private DataGridViewTextBoxColumn Class;
         private DataGridViewTextBoxColumn Campus;
+        private Button btnShowAll;
+        private Label labelSearchStudent;
     }
 }
