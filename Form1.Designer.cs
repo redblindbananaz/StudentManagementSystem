@@ -31,6 +31,11 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             grpStudentDatabase = new GroupBox();
             dgvStudents = new DataGridView();
+            Id = new DataGridViewTextBoxColumn();
+            FullName = new DataGridViewTextBoxColumn();
+            Email = new DataGridViewTextBoxColumn();
+            Class = new DataGridViewTextBoxColumn();
+            Campus = new DataGridViewTextBoxColumn();
             btnSelect = new Button();
             btnSearch = new Button();
             textBox1 = new TextBox();
@@ -58,11 +63,6 @@
             label1 = new Label();
             btnExit = new Button();
             btnNewStudent = new Button();
-            Id = new DataGridViewTextBoxColumn();
-            FullName = new DataGridViewTextBoxColumn();
-            Email = new DataGridViewTextBoxColumn();
-            Class = new DataGridViewTextBoxColumn();
-            Campus = new DataGridViewTextBoxColumn();
             grpStudentDatabase.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvStudents).BeginInit();
             grpStudentDetails.SuspendLayout();
@@ -97,6 +97,43 @@
             dgvStudents.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             dgvStudents.Size = new Size(882, 241);
             dgvStudents.TabIndex = 4;
+            dgvStudents.SelectionChanged +=dgvStudents_SelectionChanged;
+            // 
+            // Id
+            // 
+            Id.HeaderText = "Id";
+            Id.Name = "Id";
+            Id.ReadOnly = true;
+            Id.Visible = false;
+            // 
+            // FullName
+            // 
+            FullName.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            FullName.HeaderText = "Name";
+            FullName.Name = "FullName";
+            FullName.ReadOnly = true;
+            FullName.Width = 260;
+            // 
+            // Email
+            // 
+            Email.HeaderText = "Email";
+            Email.Name = "Email";
+            Email.ReadOnly = true;
+            Email.Width = 300;
+            // 
+            // Class
+            // 
+            Class.HeaderText = "Class";
+            Class.Name = "Class";
+            Class.ReadOnly = true;
+            Class.Width = 120;
+            // 
+            // Campus
+            // 
+            Campus.HeaderText = "Campus";
+            Campus.Name = "Campus";
+            Campus.ReadOnly = true;
+            Campus.Width = 200;
             // 
             // btnSelect
             // 
@@ -107,6 +144,7 @@
             btnSelect.TabIndex = 3;
             btnSelect.Text = "Select";
             btnSelect.UseVisualStyleBackColor = true;
+            btnSelect.Click += btnSelect_Click;
             // 
             // btnSearch
             // 
@@ -352,6 +390,7 @@
             btnEdit.Text = "Edit";
             btnEdit.UseVisualStyleBackColor = true;
             btnEdit.UseWaitCursor = true;
+            btnEdit.Visible = false;
             // 
             // btnDelete
             // 
@@ -364,6 +403,7 @@
             btnDelete.Text = "Delete";
             btnDelete.UseVisualStyleBackColor = true;
             btnDelete.UseWaitCursor = true;
+            btnDelete.Visible = false;
             // 
             // label1
             // 
@@ -385,6 +425,7 @@
             btnExit.TabIndex = 4;
             btnExit.Text = "EXIT";
             btnExit.UseVisualStyleBackColor = true;
+            btnExit.Click += btnExit_Click;
             // 
             // btnNewStudent
             // 
@@ -397,42 +438,6 @@
             btnNewStudent.TabIndex = 5;
             btnNewStudent.Text = "New Student";
             btnNewStudent.UseVisualStyleBackColor = false;
-            // 
-            // Id
-            // 
-            Id.HeaderText = "Id";
-            Id.Name = "Id";
-            Id.ReadOnly = true;
-            Id.Visible = false;
-            // 
-            // FullName
-            // 
-            FullName.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            FullName.HeaderText = "Name";
-            FullName.Name = "FullName";
-            FullName.ReadOnly = true;
-            FullName.Width = 260;
-            // 
-            // Email
-            // 
-            Email.HeaderText = "Email";
-            Email.Name = "Email";
-            Email.ReadOnly = true;
-            Email.Width = 300;
-            // 
-            // Class
-            // 
-            Class.HeaderText = "Class";
-            Class.Name = "Class";
-            Class.ReadOnly = true;
-            Class.Width = 120;
-            // 
-            // Campus
-            // 
-            Campus.HeaderText = "Campus";
-            Campus.Name = "Campus";
-            Campus.ReadOnly = true;
-            Campus.Width = 200;
             // 
             // Form1
             // 

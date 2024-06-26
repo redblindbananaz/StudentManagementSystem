@@ -14,11 +14,10 @@ namespace StudentManagementSystem
             //Need to set the selection mode to fullrowselect according to microsoft documentation
             dgvStudents.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
-            this.dgvStudents.SelectionChanged += new System.EventHandler(this.dgvStudents_SelectionChanged);
-            this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
+            
             isFormLoaded = true;
         }
-        
+
         public void InitializeStudentData()
         {
             students = new List<Student>
@@ -28,7 +27,7 @@ namespace StudentManagementSystem
                 new Student(3, "foo", "bar",21, "Other", "1234567890", "foo.bar@gmail.com","IT4234","Christchurch",true),
 
             };
-           
+
         }
 
         private void dgvStudents_SelectionChanged(object sender, EventArgs e)
@@ -39,17 +38,17 @@ namespace StudentManagementSystem
                 return;
             if (dgvStudents.SelectedRows.Count > 0)
             {
-                 selectedRowIndex = dgvStudents.SelectedRows[0].Index;
+                selectedRowIndex = dgvStudents.SelectedRows[0].Index;
             }
 
-            
-            
-        
+
+
+
         }
 
         private void btnSelect_Click(object sender, EventArgs e)
         {
-            if (selectedRowIndex >= 0 && selectedRowIndex <dgvStudents.Rows.Count)
+            if (selectedRowIndex >= 0 && selectedRowIndex < dgvStudents.Rows.Count)
             {
 
                 var selectedRow = dgvStudents.SelectedRows[0];
@@ -69,7 +68,9 @@ namespace StudentManagementSystem
                     txtExtraMural.Text = BooleanConverter.Convert(selectedStudent.ExtraMural);
 
                     btnEdit.Enabled = true;
+                    btnEdit.Visible = true;
                     btnDelete.Enabled = true;
+                    btnDelete.Visible = true;
                 }
             }
             else
@@ -79,8 +80,18 @@ namespace StudentManagementSystem
 
         }
 
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Are you sure you want to exit?", "Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dialogResult == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+
+        }
+
         private void PopulateStudentList()
-        { 
+        {
             dgvStudents.Rows.Clear();
             foreach (var student in students)
             {
@@ -123,8 +134,6 @@ namespace StudentManagementSystem
                 return value ? "Yes" : "No";
             }
         }
-
-
 
     }
 }
