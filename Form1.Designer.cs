@@ -31,6 +31,11 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             grpStudentDatabase = new GroupBox();
             dgvStudents = new DataGridView();
+            Id = new DataGridViewTextBoxColumn();
+            FullName = new DataGridViewTextBoxColumn();
+            Email = new DataGridViewTextBoxColumn();
+            Class = new DataGridViewTextBoxColumn();
+            Campus = new DataGridViewTextBoxColumn();
             btnSelect = new Button();
             btnSearch = new Button();
             textBox1 = new TextBox();
@@ -58,10 +63,6 @@
             label1 = new Label();
             btnExit = new Button();
             btnNewStudent = new Button();
-            FullName = new DataGridViewTextBoxColumn();
-            Email = new DataGridViewTextBoxColumn();
-            Class = new DataGridViewTextBoxColumn();
-            Campus = new DataGridViewTextBoxColumn();
             grpStudentDatabase.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvStudents).BeginInit();
             grpStudentDetails.SuspendLayout();
@@ -87,12 +88,43 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dgvStudents.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dgvStudents.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvStudents.Columns.AddRange(new DataGridViewColumn[] { FullName, Email, Class, Campus });
+            dgvStudents.Columns.AddRange(new DataGridViewColumn[] { Id, FullName, Email, Class, Campus });
             dgvStudents.Location = new Point(8, 80);
             dgvStudents.Name = "dgvStudents";
             dgvStudents.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             dgvStudents.Size = new Size(882, 241);
             dgvStudents.TabIndex = 4;
+            // 
+            // Id
+            // 
+            Id.HeaderText = "Id";
+            Id.Name = "Id";
+            Id.Visible = false;
+            // 
+            // FullName
+            // 
+            FullName.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            FullName.HeaderText = "Name";
+            FullName.Name = "FullName";
+            FullName.Width = 260;
+            // 
+            // Email
+            // 
+            Email.HeaderText = "Email";
+            Email.Name = "Email";
+            Email.Width = 300;
+            // 
+            // Class
+            // 
+            Class.HeaderText = "Class";
+            Class.Name = "Class";
+            Class.Width = 120;
+            // 
+            // Campus
+            // 
+            Campus.HeaderText = "Campus";
+            Campus.Name = "Campus";
+            Campus.Width = 200;
             // 
             // btnSelect
             // 
@@ -339,6 +371,7 @@
             // 
             // btnEdit
             // 
+            btnEdit.Enabled = false;
             btnEdit.Font = new Font("Segoe UI", 14F);
             btnEdit.Location = new Point(684, 224);
             btnEdit.Name = "btnEdit";
@@ -393,31 +426,6 @@
             btnNewStudent.Text = "New Student";
             btnNewStudent.UseVisualStyleBackColor = false;
             // 
-            // FullName
-            // 
-            FullName.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            FullName.HeaderText = "Name";
-            FullName.Name = "FullName";
-            FullName.Width = 260;
-            // 
-            // Email
-            // 
-            Email.HeaderText = "Email";
-            Email.Name = "Email";
-            Email.Width = 300;
-            // 
-            // Class
-            // 
-            Class.HeaderText = "Class";
-            Class.Name = "Class";
-            Class.Width = 120;
-            // 
-            // Campus
-            // 
-            Campus.HeaderText = "Campus";
-            Campus.Name = "Campus";
-            Campus.Width = 200;
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -469,6 +477,7 @@
         private Button btnExit;
         private Button btnNewStudent;
         private DataGridView dgvStudents;
+        private DataGridViewTextBoxColumn Id;
         private DataGridViewTextBoxColumn FullName;
         private DataGridViewTextBoxColumn Email;
         private DataGridViewTextBoxColumn Class;
