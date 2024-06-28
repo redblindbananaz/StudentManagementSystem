@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            checkedListBoxExtraMural = new CheckedListBox();
             grpStudentDatabase = new GroupBox();
             txtErrorSearch = new TextBox();
             labelSearchStudent = new Label();
@@ -77,7 +78,6 @@
             btnSaveNewStudent = new Button();
             groupBox2 = new GroupBox();
             label2 = new Label();
-            checkedListBoxExtraMural = new CheckedListBox();
             label2Campus = new Label();
             comboBox1 = new ComboBox();
             label2Class = new Label();
@@ -109,6 +109,21 @@
             groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
             SuspendLayout();
+            // 
+            // checkedListBoxExtraMural
+            // 
+            checkedListBoxExtraMural.AccessibleRole = AccessibleRole.None;
+            checkedListBoxExtraMural.BackColor = SystemColors.Control;
+            checkedListBoxExtraMural.BorderStyle = BorderStyle.None;
+            checkedListBoxExtraMural.Font = new Font("Segoe UI", 12F);
+            checkedListBoxExtraMural.FormattingEnabled = true;
+            checkedListBoxExtraMural.Items.AddRange(new object[] { "Yes", "No" });
+            checkedListBoxExtraMural.Location = new Point(13, 280);
+            checkedListBoxExtraMural.MultiColumn = true;
+            checkedListBoxExtraMural.Name = "checkedListBoxExtraMural";
+            checkedListBoxExtraMural.Size = new Size(268, 24);
+            checkedListBoxExtraMural.TabIndex = 4;
+            checkedListBoxExtraMural.ItemCheck += checkedListBoxExtraMural_ItemCheck;
             // 
             // grpStudentDatabase
             // 
@@ -670,19 +685,6 @@
             label2.Size = new Size(108, 25);
             label2.TabIndex = 5;
             label2.Text = "ExtraMural:";
-            // 
-            // checkedListBoxExtraMural
-            // 
-            checkedListBoxExtraMural.BackColor = SystemColors.Control;
-            checkedListBoxExtraMural.BorderStyle = BorderStyle.None;
-            checkedListBoxExtraMural.Font = new Font("Segoe UI", 12F);
-            checkedListBoxExtraMural.FormattingEnabled = true;
-            checkedListBoxExtraMural.Items.AddRange(new object[] { "Yes", "No" });
-            checkedListBoxExtraMural.Location = new Point(13, 280);
-            checkedListBoxExtraMural.MultiColumn = true;
-            checkedListBoxExtraMural.Name = "checkedListBoxExtraMural";
-            checkedListBoxExtraMural.Size = new Size(268, 24);
-            checkedListBoxExtraMural.TabIndex = 4;
             // 
             // label2Campus
             // 

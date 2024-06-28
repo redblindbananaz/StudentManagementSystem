@@ -266,15 +266,15 @@ namespace StudentManagementSystem
             if (NewStudentInputIsValidated())
             {
                 var newStudent = new Student(
-                    students.Count + 1, 
-                    txtNewFirstName.Text, 
-                    txtNewLastName.Text, 
-                    Convert.ToInt32(txtNewAge.Text), 
-                    checkedListBoxGender.SelectedItem?.ToString(), 
-                    txtNewPhone.Text, 
-                    txtNewEmail.Text, 
-                    comboBoxClass.SelectedItem?.ToString(), 
-                    comboBox1.SelectedItem?.ToString(), 
+                    students.Count + 1,
+                    txtNewFirstName.Text,
+                    txtNewLastName.Text,
+                    Convert.ToInt32(txtNewAge.Text),
+                    checkedListBoxGender.SelectedItem?.ToString(),
+                    txtNewPhone.Text,
+                    txtNewEmail.Text,
+                    comboBoxClass.SelectedItem?.ToString(),
+                    comboBox1.SelectedItem?.ToString(),
                     checkedListBoxExtraMural.CheckedItems.Contains("Yes")
                     );
 
@@ -323,6 +323,23 @@ namespace StudentManagementSystem
             comboBox1.SelectedIndex = -1;
             checkedListBoxGender.SelectedIndex = 0;
             checkedListBoxExtraMural.SelectedIndex = 0;
+        }
+
+        private void checkedListBoxExtraMural_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            for (int i=0; i <checkedListBoxExtraMural.Items.Count; i++)
+            {
+                if (i != e.Index)
+                {
+                    checkedListBoxExtraMural.SetItemChecked(i, false);
+                }
+            }
+
+        }
+
+        private void checkedListBoxExtraMural_SelectedIndexChangedk(object sender, EventArgs e)
+        {
+            checkedListBoxExtraMural.ClearSelected();
         }
     }
 }
