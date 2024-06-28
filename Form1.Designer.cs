@@ -97,6 +97,7 @@
             txtNewFirstName = new TextBox();
             tabPage2 = new TabPage();
             openFileDialog1 = new OpenFileDialog();
+            txtErrors = new TextBox();
             grpStudentDatabase.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvStudents).BeginInit();
             grpStudentDetails.SuspendLayout();
@@ -628,6 +629,7 @@
             // 
             // NewStudentPanel
             // 
+            NewStudentPanel.Controls.Add(txtErrors);
             NewStudentPanel.Controls.Add(btnCancel);
             NewStudentPanel.Controls.Add(btnSaveNewStudent);
             NewStudentPanel.Controls.Add(groupBox2);
@@ -855,6 +857,7 @@
             // 
             // txtNewLastName
             // 
+            txtNewLastName.BackColor = SystemColors.Window;
             txtNewLastName.Location = new Point(306, 81);
             txtNewLastName.Name = "txtNewLastName";
             txtNewLastName.Size = new Size(280, 32);
@@ -881,6 +884,16 @@
             // 
             openFileDialog1.FileName = "openFileDialog1";
             // 
+            // txtErrors
+            // 
+            txtErrors.BackColor = SystemColors.Control;
+            txtErrors.BorderStyle = BorderStyle.None;
+            txtErrors.Font = new Font("Segoe UI", 14F);
+            txtErrors.Location = new Point(21, 340);
+            txtErrors.Name = "txtErrors";
+            txtErrors.Size = new Size(584, 25);
+            txtErrors.TabIndex = 4;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -903,6 +916,7 @@
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
             NewStudentPanel.ResumeLayout(false);
+            NewStudentPanel.PerformLayout();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             groupBox1.ResumeLayout(false);
@@ -979,5 +993,6 @@
         private Button btnSaveNewStudent;
         private Button btnCancel;
         private OpenFileDialog openFileDialog1;
+        private TextBox txtErrors;
     }
 }

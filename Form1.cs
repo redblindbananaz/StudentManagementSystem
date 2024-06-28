@@ -269,7 +269,7 @@ namespace StudentManagementSystem
                     students.Count + 1,
                     txtNewFirstName.Text,
                     txtNewLastName.Text,
-                    Convert.ToInt32(txtNewAge.Text),
+                    int.Parse(txtNewAge.Text),
                     checkedListBoxGender.SelectedItem?.ToString(),
                     txtNewPhone.Text,
                     txtNewEmail.Text,
@@ -294,22 +294,97 @@ namespace StudentManagementSystem
 
         private bool NewStudentInputIsValidated()
         {
+            bool isValid = true;
+            CLearErrorStyle();
+
             if (string.IsNullOrWhiteSpace(txtNewFirstName.Text))
             {
-                MessageBox.Show("Please enter the first name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
+                txtNewFirstName.BackColor = SystemColors.Info;
+                label3.ForeColor = Color.Red;
+                isValid =false;
             }
             if (string.IsNullOrWhiteSpace(txtNewLastName.Text))
             {
-                MessageBox.Show("Please enter the last name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
+                txtNewLastName.BackColor = SystemColors.Info;
+                label4.ForeColor = Color.Red;
+                isValid = false;
             }
             if (string.IsNullOrWhiteSpace(txtNewAge.Text))
             {
-                MessageBox.Show("Please enter the age", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
+                txtNewAge.BackColor = SystemColors.Info;
+                label5.ForeColor = Color.Red;
+                isValid = false;
             }
-            return true;
+            if(checkedListBoxGender.CheckedItems.Count == 0)
+            {
+                checkedListBoxGender.BackColor = SystemColors.Info;
+                label6.ForeColor = Color.Red;
+                isValid = false;
+            }
+            if (string.IsNullOrWhiteSpace(txtNewPhone.Text))
+            {
+                txtNewPhone.BackColor = SystemColors.Info;
+                label7.ForeColor = Color.Red;
+                isValid = false;
+            }
+            if (string.IsNullOrWhiteSpace(txtNewEmail.Text))
+            {
+                txtNewEmail.BackColor = SystemColors.Info;
+                label8.ForeColor = Color.Red;
+                isValid = false;
+            }
+            if (comboBoxClass.SelectedIndex == -1)
+            {
+                comboBoxClass.BackColor = SystemColors.Info;
+                label2Class.ForeColor = Color.Red;
+                isValid = false;
+            }
+            if (comboBox1.SelectedIndex == -1)
+            {
+                comboBox1.BackColor = SystemColors.Info;
+                label2Campus.ForeColor = Color.Red;
+                isValid = false;
+            }
+            if (checkedListBoxExtraMural.CheckedItems.Count == 0)
+            {
+                checkedListBoxExtraMural.BackColor = SystemColors.Info;
+                label2.ForeColor = Color.Red;
+                isValid = false;
+            }
+
+            if (!isValid)   
+            {
+                txtErrors.Text = "Please enter the followed required fields";
+            }
+            return isValid;
+        }
+
+        private void CLearErrorStyle() 
+        { 
+            txtNewFirstName.BackColor = SystemColors.Window;
+            txtNewLastName.BackColor = SystemColors.Window;
+            txtNewAge.BackColor = SystemColors.Window;
+            checkedListBoxGender.BackColor = SystemColors.Window;
+            txtNewPhone.BackColor = SystemColors.Window;
+            txtNewEmail.BackColor = SystemColors.Window;
+            comboBoxClass.BackColor = SystemColors.Window;
+            comboBox1.BackColor = SystemColors.Window;
+            checkedListBoxExtraMural.BackColor = SystemColors.Window;
+
+            label3.ForeColor = SystemColors.ControlText;
+            label4.ForeColor = SystemColors.ControlText;
+            label5.ForeColor = SystemColors.ControlText;
+            label6.ForeColor = SystemColors.ControlText;
+            label7.ForeColor = SystemColors.ControlText;
+            label8.ForeColor = SystemColors.ControlText;
+            label2Class.ForeColor = SystemColors.ControlText;
+            label2Campus.ForeColor = SystemColors.ControlText;
+            label2.ForeColor = SystemColors.ControlText;
+
+            txtErrors.Text = string.Empty;
+        
+        
+        
         }
 
         private void ClearNewStudentForm()
@@ -337,9 +412,5 @@ namespace StudentManagementSystem
 
         }
 
-        private void checkedListBoxExtraMural_SelectedIndexChangedk(object sender, EventArgs e)
-        {
-            checkedListBoxExtraMural.ClearSelected();
-        }
     }
 }
