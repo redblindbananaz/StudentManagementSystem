@@ -68,16 +68,46 @@
             btnNewStudent = new Button();
             panel1 = new Panel();
             panel2 = new Panel();
+            EnrollPanel = new Panel();
+            groupBox3 = new GroupBox();
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
+            NewStudentPanel = new Panel();
+            btnCancel = new Button();
+            btnSaveNewStudent = new Button();
+            groupBox2 = new GroupBox();
+            label2 = new Label();
+            checkedListBoxExtraMural = new CheckedListBox();
+            label2Campus = new Label();
+            comboBox1 = new ComboBox();
+            label2Class = new Label();
+            comboBoxClass = new ComboBox();
+            groupBox1 = new GroupBox();
+            checkedListBoxGender = new CheckedListBox();
+            label8 = new Label();
+            label7 = new Label();
+            label6 = new Label();
+            label5 = new Label();
+            label4 = new Label();
+            label3 = new Label();
+            txtNewEmail = new TextBox();
+            txtNewPhone = new TextBox();
+            txtNewAge = new TextBox();
+            txtNewLastName = new TextBox();
+            txtNewFirstName = new TextBox();
             tabPage2 = new TabPage();
+            openFileDialog1 = new OpenFileDialog();
             grpStudentDatabase.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvStudents).BeginInit();
             grpStudentDetails.SuspendLayout();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
+            EnrollPanel.SuspendLayout();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
+            NewStudentPanel.SuspendLayout();
+            groupBox2.SuspendLayout();
+            groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // grpStudentDatabase
@@ -518,6 +548,7 @@
             btnNewStudent.TabIndex = 5;
             btnNewStudent.Text = "New Student";
             btnNewStudent.UseVisualStyleBackColor = false;
+            btnNewStudent.Click += btnNewStudent_Click;
             // 
             // panel1
             // 
@@ -529,11 +560,31 @@
             // 
             // panel2
             // 
+            panel2.Controls.Add(EnrollPanel);
             panel2.Controls.Add(grpStudentDetails);
             panel2.Location = new Point(1, 449);
             panel2.Name = "panel2";
             panel2.Size = new Size(923, 284);
             panel2.TabIndex = 7;
+            // 
+            // EnrollPanel
+            // 
+            EnrollPanel.Controls.Add(groupBox3);
+            EnrollPanel.Location = new Point(-1, 1);
+            EnrollPanel.Name = "EnrollPanel";
+            EnrollPanel.Size = new Size(927, 286);
+            EnrollPanel.TabIndex = 3;
+            EnrollPanel.Visible = false;
+            // 
+            // groupBox3
+            // 
+            groupBox3.Font = new Font("Segoe UI", 14F);
+            groupBox3.Location = new Point(13, 18);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Size = new Size(898, 253);
+            groupBox3.TabIndex = 0;
+            groupBox3.TabStop = false;
+            groupBox3.Text = "Enrollment File Check:";
             // 
             // tabControl1
             // 
@@ -549,6 +600,7 @@
             // tabPage1
             // 
             tabPage1.BackgroundImageLayout = ImageLayout.None;
+            tabPage1.Controls.Add(NewStudentPanel);
             tabPage1.Controls.Add(panel1);
             tabPage1.Controls.Add(label1);
             tabPage1.Controls.Add(panel2);
@@ -557,7 +609,261 @@
             tabPage1.Padding = new Padding(3);
             tabPage1.Size = new Size(923, 732);
             tabPage1.TabIndex = 0;
-            tabPage1.Text = "System";
+            tabPage1.Text = "Students";
+            // 
+            // NewStudentPanel
+            // 
+            NewStudentPanel.Controls.Add(btnCancel);
+            NewStudentPanel.Controls.Add(btnSaveNewStudent);
+            NewStudentPanel.Controls.Add(groupBox2);
+            NewStudentPanel.Controls.Add(groupBox1);
+            NewStudentPanel.Location = new Point(0, 68);
+            NewStudentPanel.Name = "NewStudentPanel";
+            NewStudentPanel.Size = new Size(924, 382);
+            NewStudentPanel.TabIndex = 8;
+            NewStudentPanel.Visible = false;
+            // 
+            // btnCancel
+            // 
+            btnCancel.Font = new Font("Segoe UI", 14F);
+            btnCancel.Location = new Point(811, 338);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(100, 32);
+            btnCancel.TabIndex = 3;
+            btnCancel.Text = "Cancel";
+            btnCancel.UseVisualStyleBackColor = true;
+            // 
+            // btnSaveNewStudent
+            // 
+            btnSaveNewStudent.Font = new Font("Segoe UI", 14F);
+            btnSaveNewStudent.Location = new Point(697, 338);
+            btnSaveNewStudent.Name = "btnSaveNewStudent";
+            btnSaveNewStudent.Size = new Size(100, 32);
+            btnSaveNewStudent.TabIndex = 2;
+            btnSaveNewStudent.Text = "SAVE";
+            btnSaveNewStudent.UseVisualStyleBackColor = true;
+            btnSaveNewStudent.Click += btnSaveNewStudent_Click;
+            // 
+            // groupBox2
+            // 
+            groupBox2.Controls.Add(label2);
+            groupBox2.Controls.Add(checkedListBoxExtraMural);
+            groupBox2.Controls.Add(label2Campus);
+            groupBox2.Controls.Add(comboBox1);
+            groupBox2.Controls.Add(label2Class);
+            groupBox2.Controls.Add(comboBoxClass);
+            groupBox2.Font = new Font("Segoe UI", 14F);
+            groupBox2.ForeColor = SystemColors.ControlDarkDark;
+            groupBox2.Location = new Point(617, 10);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(294, 321);
+            groupBox2.TabIndex = 1;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Study Details:";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.ForeColor = SystemColors.ActiveCaptionText;
+            label2.Location = new Point(7, 239);
+            label2.Name = "label2";
+            label2.Size = new Size(108, 25);
+            label2.TabIndex = 5;
+            label2.Text = "ExtraMural:";
+            // 
+            // checkedListBoxExtraMural
+            // 
+            checkedListBoxExtraMural.BackColor = SystemColors.Control;
+            checkedListBoxExtraMural.BorderStyle = BorderStyle.None;
+            checkedListBoxExtraMural.Font = new Font("Segoe UI", 12F);
+            checkedListBoxExtraMural.FormattingEnabled = true;
+            checkedListBoxExtraMural.Items.AddRange(new object[] { "Yes", "No" });
+            checkedListBoxExtraMural.Location = new Point(13, 280);
+            checkedListBoxExtraMural.MultiColumn = true;
+            checkedListBoxExtraMural.Name = "checkedListBoxExtraMural";
+            checkedListBoxExtraMural.Size = new Size(268, 24);
+            checkedListBoxExtraMural.TabIndex = 4;
+            // 
+            // label2Campus
+            // 
+            label2Campus.AutoSize = true;
+            label2Campus.ForeColor = SystemColors.ActiveCaptionText;
+            label2Campus.Location = new Point(6, 144);
+            label2Campus.Name = "label2Campus";
+            label2Campus.Size = new Size(84, 25);
+            label2Campus.TabIndex = 3;
+            label2Campus.Text = "Campus:";
+            // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "Christchurch", "Wellington", "Auckland" });
+            comboBox1.Location = new Point(6, 181);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(282, 33);
+            comboBox1.TabIndex = 2;
+            // 
+            // label2Class
+            // 
+            label2Class.AutoSize = true;
+            label2Class.ForeColor = SystemColors.ActiveCaptionText;
+            label2Class.Location = new Point(6, 48);
+            label2Class.Name = "label2Class";
+            label2Class.Size = new Size(59, 25);
+            label2Class.TabIndex = 1;
+            label2Class.Text = "Class:";
+            // 
+            // comboBoxClass
+            // 
+            comboBoxClass.AllowDrop = true;
+            comboBoxClass.FormattingEnabled = true;
+            comboBoxClass.Items.AddRange(new object[] { "IT 6537", "IT 1234", "IT 5673" });
+            comboBoxClass.Location = new Point(6, 80);
+            comboBoxClass.Name = "comboBoxClass";
+            comboBoxClass.Size = new Size(282, 33);
+            comboBoxClass.TabIndex = 0;
+            // 
+            // groupBox1
+            // 
+            groupBox1.BackgroundImageLayout = ImageLayout.Center;
+            groupBox1.Controls.Add(checkedListBoxGender);
+            groupBox1.Controls.Add(label8);
+            groupBox1.Controls.Add(label7);
+            groupBox1.Controls.Add(label6);
+            groupBox1.Controls.Add(label5);
+            groupBox1.Controls.Add(label4);
+            groupBox1.Controls.Add(label3);
+            groupBox1.Controls.Add(txtNewEmail);
+            groupBox1.Controls.Add(txtNewPhone);
+            groupBox1.Controls.Add(txtNewAge);
+            groupBox1.Controls.Add(txtNewLastName);
+            groupBox1.Controls.Add(txtNewFirstName);
+            groupBox1.Font = new Font("Segoe UI", 14F);
+            groupBox1.ForeColor = SystemColors.ControlDarkDark;
+            groupBox1.Location = new Point(13, 10);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(592, 321);
+            groupBox1.TabIndex = 0;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "New Student Details:";
+            // 
+            // checkedListBoxGender
+            // 
+            checkedListBoxGender.BackColor = SystemColors.Control;
+            checkedListBoxGender.BorderStyle = BorderStyle.None;
+            checkedListBoxGender.CheckOnClick = true;
+            checkedListBoxGender.Font = new Font("Segoe UI", 12F);
+            checkedListBoxGender.FormattingEnabled = true;
+            checkedListBoxGender.HorizontalScrollbar = true;
+            checkedListBoxGender.IntegralHeight = false;
+            checkedListBoxGender.Items.AddRange(new object[] { "Male", "Female", "Other" });
+            checkedListBoxGender.Location = new Point(306, 175);
+            checkedListBoxGender.MultiColumn = true;
+            checkedListBoxGender.Name = "checkedListBoxGender";
+            checkedListBoxGender.Size = new Size(277, 54);
+            checkedListBoxGender.TabIndex = 11;
+            checkedListBoxGender.UseTabStops = false;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI", 14.25F, FontStyle.Underline, GraphicsUnit.Point, 0);
+            label8.ForeColor = SystemColors.ActiveCaptionText;
+            label8.Location = new Point(306, 239);
+            label8.Name = "label8";
+            label8.Size = new Size(134, 25);
+            label8.TabIndex = 10;
+            label8.Text = "Email Address:";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI", 14.25F, FontStyle.Underline, GraphicsUnit.Point, 0);
+            label7.ForeColor = SystemColors.ActiveCaptionText;
+            label7.Location = new Point(8, 239);
+            label7.Name = "label7";
+            label7.Size = new Size(144, 25);
+            label7.TabIndex = 9;
+            label7.Text = "Phone Number:";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 14.25F, FontStyle.Underline, GraphicsUnit.Point, 0);
+            label6.ForeColor = SystemColors.ActiveCaptionText;
+            label6.Location = new Point(306, 144);
+            label6.Name = "label6";
+            label6.Size = new Size(78, 25);
+            label6.TabIndex = 8;
+            label6.Text = "Gender:";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 14.25F, FontStyle.Underline, GraphicsUnit.Point, 0);
+            label5.ForeColor = SystemColors.ActiveCaptionText;
+            label5.Location = new Point(8, 144);
+            label5.Name = "label5";
+            label5.Size = new Size(49, 25);
+            label5.TabIndex = 7;
+            label5.Text = "Age:";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 14.25F, FontStyle.Underline, GraphicsUnit.Point, 0);
+            label4.ForeColor = SystemColors.ActiveCaptionText;
+            label4.Location = new Point(306, 48);
+            label4.Name = "label4";
+            label4.Size = new Size(104, 25);
+            label4.TabIndex = 6;
+            label4.Text = "Last Name:";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 14.25F, FontStyle.Underline, GraphicsUnit.Point, 0);
+            label3.ForeColor = SystemColors.ActiveCaptionText;
+            label3.Location = new Point(8, 48);
+            label3.Name = "label3";
+            label3.Size = new Size(106, 25);
+            label3.TabIndex = 5;
+            label3.Text = "First Name:";
+            // 
+            // txtNewEmail
+            // 
+            txtNewEmail.Location = new Point(306, 278);
+            txtNewEmail.Name = "txtNewEmail";
+            txtNewEmail.Size = new Size(277, 32);
+            txtNewEmail.TabIndex = 4;
+            // 
+            // txtNewPhone
+            // 
+            txtNewPhone.Location = new Point(8, 278);
+            txtNewPhone.Name = "txtNewPhone";
+            txtNewPhone.Size = new Size(280, 32);
+            txtNewPhone.TabIndex = 3;
+            // 
+            // txtNewAge
+            // 
+            txtNewAge.Location = new Point(8, 182);
+            txtNewAge.Name = "txtNewAge";
+            txtNewAge.Size = new Size(280, 32);
+            txtNewAge.TabIndex = 2;
+            // 
+            // txtNewLastName
+            // 
+            txtNewLastName.Location = new Point(306, 81);
+            txtNewLastName.Name = "txtNewLastName";
+            txtNewLastName.Size = new Size(280, 32);
+            txtNewLastName.TabIndex = 1;
+            // 
+            // txtNewFirstName
+            // 
+            txtNewFirstName.Location = new Point(8, 81);
+            txtNewFirstName.Name = "txtNewFirstName";
+            txtNewFirstName.Size = new Size(280, 32);
+            txtNewFirstName.TabIndex = 0;
             // 
             // tabPage2
             // 
@@ -566,8 +872,12 @@
             tabPage2.Padding = new Padding(3);
             tabPage2.Size = new Size(923, 732);
             tabPage2.TabIndex = 1;
-            tabPage2.Text = "Information";
+            tabPage2.Text = "App Info";
             tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // openFileDialog1
+            // 
+            openFileDialog1.FileName = "openFileDialog1";
             // 
             // Form1
             // 
@@ -586,9 +896,15 @@
             grpStudentDetails.PerformLayout();
             panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
+            EnrollPanel.ResumeLayout(false);
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
+            NewStudentPanel.ResumeLayout(false);
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -635,5 +951,31 @@
         private DataGridViewTextBoxColumn Email;
         private DataGridViewTextBoxColumn Class;
         private DataGridViewTextBoxColumn Campus;
+        private Panel NewStudentPanel;
+        private GroupBox groupBox1;
+        private GroupBox groupBox2;
+        private ComboBox comboBoxClass;
+        private Label label2Campus;
+        private ComboBox comboBox1;
+        private Label label2Class;
+        private Label label2;
+        private CheckedListBox checkedListBoxExtraMural;
+        private TextBox txtNewPhone;
+        private TextBox txtNewAge;
+        private TextBox txtNewLastName;
+        private TextBox txtNewFirstName;
+        private Label label5;
+        private Label label4;
+        private Label label3;
+        private TextBox txtNewEmail;
+        private CheckedListBox checkedListBoxGender;
+        private Label label8;
+        private Label label7;
+        private Label label6;
+        private Panel EnrollPanel;
+        private GroupBox groupBox3;
+        private Button btnSaveNewStudent;
+        private Button btnCancel;
+        private OpenFileDialog openFileDialog1;
     }
 }

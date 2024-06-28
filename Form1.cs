@@ -11,6 +11,7 @@ namespace StudentManagementSystem
         public event StudentListChangedEventHandler StudentListChanged;
 
         private List<Student> students;
+        private List<Student> newStudents;
         private bool isFormLoaded = false;
         private int selectedRowIndex = -1;
         private BindingList<Student> filteredStudents;
@@ -46,9 +47,9 @@ namespace StudentManagementSystem
         {
             students = new List<Student>
             {
-                new Student(1,"John", "Doe", 20, "Male", "1234567890", "john.doe@gmail.com","IT1234","Auckland",true),
-                new Student(2, "Jane", "Smith", 24, "Female", "9934567890", "jane.smith@gmail.com","IT1254","Wellington",false),
-                new Student(3, "foo", "bar",21, "Other", "1234567890", "foo.bar@gmail.com","IT4234","Christchurch",true),
+                new Student(1,"John", "Doe", 20, "Male", "1234567890", "john.doe@gmail.com","IT 1234","Auckland",true),
+                new Student(2, "Jane", "Smith", 24, "Female", "9934567890", "jane.smith@gmail.com","IT 6537","Wellington",false),
+                new Student(3, "foo", "bar",21, "Other", "1234567890", "foo.bar@gmail.com","IT 5673","Christchurch",true),
 
             };
 
@@ -240,13 +241,88 @@ namespace StudentManagementSystem
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (tabControl1.SelectedIndex == 0) {
+            if (tabControl1.SelectedIndex == 0)
+            {
                 btnNewStudent.Visible = true;
-            } else
+            }
+            else
             {
                 btnNewStudent.Visible = false;
 
             }
+        }
+
+        private void btnNewStudent_Click(object sender, EventArgs e)
+        {
+            panel1.Visible = false;
+            panel2.Visible = false;
+            NewStudentPanel.Visible = true;
+            EnrollPanel.Visible = true;
+        }
+
+        private void btnSaveNewStudent_Click(object sender, EventArgs e)
+        {
+            //Need to validate the input before saving the new student:
+            if (NewStudentInputIsValidated())
+            {
+                var newStudent = new Student(
+                    students.Count + 1, 
+                    txtNewFirstName.Text, 
+                    txtNewLastName.Text, 
+                    Convert.ToInt32(txtNewAge.Text), 
+                    checkedListBoxGender.SelectedItem?.ToString(), 
+                    txtNewPhone.Text, 
+                    txtNewEmail.Text, 
+                    comboBoxClass.SelectedItem?.ToString(), 
+                    comboBox1.SelectedItem?.ToString(), 
+                    checkedListBoxExtraMural.CheckedItems.Contains("Yes")
+                    );
+
+                newStudents?.Add(newStudent);
+                OnStudentListChanged();// Trigger the Custom Event.
+
+                students.Add(newStudent);
+                PopulateStudentList();
+
+                NewStudentPanel.Visible = false;
+                EnrollPanel.Visible = false;
+                panel1.Visible = true;
+                panel2.Visible = true;
+                ClearNewStudentForm();
+            }
+        }
+
+        private bool NewStudentInputIsValidated()
+        {
+            if (string.IsNullOrWhiteSpace(txtNewFirstName.Text))
+            {
+                MessageBox.Show("Please enter the first name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(txtNewLastName.Text))
+            {
+                MessageBox.Show("Please enter the last name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(txtNewAge.Text))
+            {
+                MessageBox.Show("Please enter the age", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            return true;
+        }
+
+        private void ClearNewStudentForm()
+        {
+            txtNewFirstName.Text = string.Empty;
+            txtNewLastName.Text = string.Empty;
+            txtNewAge.Text = string.Empty;
+            txtNewPhone.Text = string.Empty;
+            txtNewEmail.Text = string.Empty;
+            comboBoxClass.SelectedIndex = -1;
+            comboBox1.SelectedIndex = -1;
+            checkedListBoxGender.SelectedIndex = 0;
+            checkedListBoxExtraMural.SelectedIndex = 0;
         }
     }
 }
