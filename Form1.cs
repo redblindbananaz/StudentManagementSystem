@@ -2,8 +2,14 @@ using System.ComponentModel;
 
 namespace StudentManagementSystem
 {
+
     public partial class Form1 : Form
     {
+        //Delegate for the event handler:
+        public delegate void StudentListChangedEventHandler(object sender, EventArgs e);
+        //Declare the event:
+        public event StudentListChangedEventHandler StudentListChanged;
+
         private List<Student> students;
         private bool isFormLoaded = false;
         private int selectedRowIndex = -1;
@@ -19,6 +25,21 @@ namespace StudentManagementSystem
 
             // Flag to check if form is loaded while testing with message boxes
             isFormLoaded = true;
+
+            //Subscribe to the custom event:
+            this.StudentListChanged += new StudentListChangedEventHandler(this.Form1_StudentListChanged);
+        }
+
+        // Method to raise the custom event:
+        protected virtual void OnStudentListChanged()
+        {
+            StudentListChanged?.Invoke(this, EventArgs.Empty);
+        }
+
+        // Event handler for the custom event:
+        private void Form1_StudentListChanged(object sender, EventArgs e)
+        {
+            MessageBox.Show("Student List Changed", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         public void InitializeStudentData()
@@ -167,6 +188,7 @@ namespace StudentManagementSystem
                         students.Remove(studentToRemove);
                         PopulateStudentList();
                         ClearForm();
+                        OnStudentListChanged();
                     }
                 }
             }
@@ -213,7 +235,18 @@ namespace StudentManagementSystem
             ClearForm();
             PopulateStudentList();
             textBox1.Text = string.Empty;
-            txtErrorSearch.Text =string.Empty;
+            txtErrorSearch.Text = string.Empty;
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabControl1.SelectedIndex == 0) {
+                btnNewStudent.Visible = true;
+            } else
+            {
+                btnNewStudent.Visible = false;
+
+            }
         }
     }
 }

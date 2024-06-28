@@ -68,11 +68,16 @@
             btnNewStudent = new Button();
             panel1 = new Panel();
             panel2 = new Panel();
+            tabControl1 = new TabControl();
+            tabPage1 = new TabPage();
+            tabPage2 = new TabPage();
             grpStudentDatabase.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvStudents).BeginInit();
             grpStudentDetails.SuspendLayout();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
+            tabControl1.SuspendLayout();
+            tabPage1.SuspendLayout();
             SuspendLayout();
             // 
             // grpStudentDatabase
@@ -86,9 +91,9 @@
             grpStudentDatabase.Controls.Add(textBox1);
             grpStudentDatabase.Font = new Font("Segoe UI", 13F);
             grpStudentDatabase.ForeColor = SystemColors.ControlDarkDark;
-            grpStudentDatabase.Location = new Point(12, 9);
+            grpStudentDatabase.Location = new Point(9, 9);
             grpStudentDatabase.Name = "grpStudentDatabase";
-            grpStudentDatabase.Size = new Size(896, 365);
+            grpStudentDatabase.Size = new Size(902, 365);
             grpStudentDatabase.TabIndex = 1;
             grpStudentDatabase.TabStop = false;
             grpStudentDatabase.Text = "Student Database";
@@ -234,11 +239,11 @@
             grpStudentDetails.Controls.Add(labelFirstName);
             grpStudentDetails.Controls.Add(btnEdit);
             grpStudentDetails.Controls.Add(btnDelete);
-            grpStudentDetails.Font = new Font("Segoe UI", 20F);
+            grpStudentDetails.Font = new Font("Segoe UI", 14F);
             grpStudentDetails.ForeColor = SystemColors.ControlDarkDark;
             grpStudentDetails.Location = new Point(12, 19);
             grpStudentDetails.Name = "grpStudentDetails";
-            grpStudentDetails.Size = new Size(896, 262);
+            grpStudentDetails.Size = new Size(902, 262);
             grpStudentDetails.TabIndex = 2;
             grpStudentDetails.TabStop = false;
             grpStudentDetails.Text = "Student Details";
@@ -483,7 +488,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 32F, FontStyle.Underline);
-            label1.Location = new Point(182, 9);
+            label1.Location = new Point(172, 6);
             label1.Name = "label1";
             label1.Size = new Size(592, 59);
             label1.TabIndex = 3;
@@ -493,7 +498,7 @@
             // btnExit
             // 
             btnExit.Font = new Font("Segoe UI", 14F);
-            btnExit.Location = new Point(12, 765);
+            btnExit.Location = new Point(9, 765);
             btnExit.Name = "btnExit";
             btnExit.Size = new Size(100, 32);
             btnExit.TabIndex = 4;
@@ -503,12 +508,13 @@
             // 
             // btnNewStudent
             // 
-            btnNewStudent.BackColor = SystemColors.ActiveCaptionText;
+            btnNewStudent.BackColor = SystemColors.HotTrack;
+            btnNewStudent.Cursor = Cursors.Hand;
             btnNewStudent.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnNewStudent.ForeColor = SystemColors.Control;
-            btnNewStudent.Location = new Point(696, 765);
+            btnNewStudent.Location = new Point(697, 759);
             btnNewStudent.Name = "btnNewStudent";
-            btnNewStudent.Size = new Size(206, 32);
+            btnNewStudent.Size = new Size(206, 44);
             btnNewStudent.TabIndex = 5;
             btnNewStudent.Text = "New Student";
             btnNewStudent.UseVisualStyleBackColor = false;
@@ -516,31 +522,63 @@
             // panel1
             // 
             panel1.Controls.Add(grpStudentDatabase);
-            panel1.Location = new Point(0, 62);
+            panel1.Location = new Point(0, 69);
             panel1.Name = "panel1";
-            panel1.Size = new Size(925, 389);
+            panel1.Size = new Size(923, 381);
             panel1.TabIndex = 6;
             // 
             // panel2
             // 
             panel2.Controls.Add(grpStudentDetails);
-            panel2.Location = new Point(0, 457);
+            panel2.Location = new Point(1, 449);
             panel2.Name = "panel2";
-            panel2.Size = new Size(925, 302);
+            panel2.Size = new Size(923, 284);
             panel2.TabIndex = 7;
+            // 
+            // tabControl1
+            // 
+            tabControl1.Controls.Add(tabPage1);
+            tabControl1.Controls.Add(tabPage2);
+            tabControl1.Location = new Point(-4, -1);
+            tabControl1.Name = "tabControl1";
+            tabControl1.SelectedIndex = 0;
+            tabControl1.Size = new Size(931, 760);
+            tabControl1.TabIndex = 20;
+            tabControl1.SelectedIndexChanged += tabControl1_SelectedIndexChanged;
+            // 
+            // tabPage1
+            // 
+            tabPage1.BackgroundImageLayout = ImageLayout.None;
+            tabPage1.Controls.Add(panel1);
+            tabPage1.Controls.Add(label1);
+            tabPage1.Controls.Add(panel2);
+            tabPage1.Location = new Point(4, 24);
+            tabPage1.Name = "tabPage1";
+            tabPage1.Padding = new Padding(3);
+            tabPage1.Size = new Size(923, 732);
+            tabPage1.TabIndex = 0;
+            tabPage1.Text = "System";
+            // 
+            // tabPage2
+            // 
+            tabPage2.Location = new Point(4, 24);
+            tabPage2.Name = "tabPage2";
+            tabPage2.Padding = new Padding(3);
+            tabPage2.Size = new Size(923, 732);
+            tabPage2.TabIndex = 1;
+            tabPage2.Text = "Information";
+            tabPage2.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(924, 809);
-            Controls.Add(panel2);
-            Controls.Add(panel1);
+            ClientSize = new Size(923, 809);
+            Controls.Add(tabControl1);
             Controls.Add(btnNewStudent);
             Controls.Add(btnExit);
-            Controls.Add(label1);
             Name = "Form1";
-            Text = "Form1";
+            Text = "Student Management System";
             grpStudentDatabase.ResumeLayout(false);
             grpStudentDatabase.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvStudents).EndInit();
@@ -548,8 +586,10 @@
             grpStudentDetails.PerformLayout();
             panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
+            tabControl1.ResumeLayout(false);
+            tabPage1.ResumeLayout(false);
+            tabPage1.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -585,12 +625,15 @@
         private Button btnShowAll;
         private Label labelSearchStudent;
         private Panel panel1;
+        private Panel panel2;
+        private TextBox txtErrorSearch;
+        private TabControl tabControl1;
+        private TabPage tabPage1;
+        private TabPage tabPage2;
         private DataGridViewTextBoxColumn Id;
         private DataGridViewTextBoxColumn FullName;
         private DataGridViewTextBoxColumn Email;
         private DataGridViewTextBoxColumn Class;
         private DataGridViewTextBoxColumn Campus;
-        private Panel panel2;
-        private TextBox txtErrorSearch;
     }
 }
