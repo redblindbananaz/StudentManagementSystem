@@ -1,4 +1,5 @@
 using System.ComponentModel;
+using StudentManagementSystem.Models;
 
 namespace StudentManagementSystem
 {
@@ -120,35 +121,7 @@ namespace StudentManagementSystem
                 dgvStudents.Rows.Add(student.Id, student.FullName, student.Email, student.ClassName, student.Campus);
             }
         }
-        public class Student
-        {
-            public int Id { get; set; }
-            public string FirstName { get; set; }
-            public string LastName { get; set; }
-            public string Age { get; set; }
-            public string Gender { get; set; }
-            public string PhoneNumber { get; set; }
-            public string Email { get; set; }
-            public string ClassName { get; set; }
-            public string Campus { get; set; }
-            public bool ExtraMural { get; set; }
 
-            public Student(int id, string firstName, string lastName, int age, string gender, string phoneNumber, string email, string className, string campus, bool extraMural)
-            {
-                Id = id;
-                FirstName = firstName;
-                LastName = lastName;
-                Age = age.ToString();
-                Gender = gender;
-                PhoneNumber = phoneNumber;
-                Email = email;
-                ClassName = className;
-                Campus = campus;
-                ExtraMural = extraMural;
-            }
-
-            public string FullName => $"{FirstName} {LastName}";
-        }
         public static class BooleanConverter
         {
             public static string Convert(bool value)
@@ -292,117 +265,10 @@ namespace StudentManagementSystem
             }
         }
 
-        private bool NewStudentInputIsValidated()
-        {
-            bool isValid = true;
-            CLearErrorStyle();
-
-            if (string.IsNullOrWhiteSpace(txtNewFirstName.Text))
-            {
-                txtNewFirstName.BackColor = SystemColors.Info;
-                label3.ForeColor = Color.Red;
-                isValid =false;
-            }
-            if (string.IsNullOrWhiteSpace(txtNewLastName.Text))
-            {
-                txtNewLastName.BackColor = SystemColors.Info;
-                label4.ForeColor = Color.Red;
-                isValid = false;
-            }
-            if (string.IsNullOrWhiteSpace(txtNewAge.Text))
-            {
-                txtNewAge.BackColor = SystemColors.Info;
-                label5.ForeColor = Color.Red;
-                isValid = false;
-            }
-            if(checkedListBoxGender.CheckedItems.Count == 0)
-            {
-                checkedListBoxGender.BackColor = SystemColors.Info;
-                label6.ForeColor = Color.Red;
-                isValid = false;
-            }
-            if (string.IsNullOrWhiteSpace(txtNewPhone.Text))
-            {
-                txtNewPhone.BackColor = SystemColors.Info;
-                label7.ForeColor = Color.Red;
-                isValid = false;
-            }
-            if (string.IsNullOrWhiteSpace(txtNewEmail.Text))
-            {
-                txtNewEmail.BackColor = SystemColors.Info;
-                label8.ForeColor = Color.Red;
-                isValid = false;
-            }
-            if (comboBoxClass.SelectedIndex == -1)
-            {
-                comboBoxClass.BackColor = SystemColors.Info;
-                label2Class.ForeColor = Color.Red;
-                isValid = false;
-            }
-            if (comboBox1.SelectedIndex == -1)
-            {
-                comboBox1.BackColor = SystemColors.Info;
-                label2Campus.ForeColor = Color.Red;
-                isValid = false;
-            }
-            if (checkedListBoxExtraMural.CheckedItems.Count == 0)
-            {
-                checkedListBoxExtraMural.BackColor = SystemColors.Info;
-                label2.ForeColor = Color.Red;
-                isValid = false;
-            }
-
-            if (!isValid)   
-            {
-                txtErrors.Text = "Please enter the followed required fields";
-            }
-            return isValid;
-        }
-
-        private void CLearErrorStyle() 
-        { 
-            txtNewFirstName.BackColor = SystemColors.Window;
-            txtNewLastName.BackColor = SystemColors.Window;
-            txtNewAge.BackColor = SystemColors.Window;
-            checkedListBoxGender.BackColor = SystemColors.Window;
-            txtNewPhone.BackColor = SystemColors.Window;
-            txtNewEmail.BackColor = SystemColors.Window;
-            comboBoxClass.BackColor = SystemColors.Window;
-            comboBox1.BackColor = SystemColors.Window;
-            checkedListBoxExtraMural.BackColor = SystemColors.Window;
-
-            label3.ForeColor = SystemColors.ControlText;
-            label4.ForeColor = SystemColors.ControlText;
-            label5.ForeColor = SystemColors.ControlText;
-            label6.ForeColor = SystemColors.ControlText;
-            label7.ForeColor = SystemColors.ControlText;
-            label8.ForeColor = SystemColors.ControlText;
-            label2Class.ForeColor = SystemColors.ControlText;
-            label2Campus.ForeColor = SystemColors.ControlText;
-            label2.ForeColor = SystemColors.ControlText;
-
-            txtErrors.Text = string.Empty;
-        
-        
-        
-        }
-
-        private void ClearNewStudentForm()
-        {
-            txtNewFirstName.Text = string.Empty;
-            txtNewLastName.Text = string.Empty;
-            txtNewAge.Text = string.Empty;
-            txtNewPhone.Text = string.Empty;
-            txtNewEmail.Text = string.Empty;
-            comboBoxClass.SelectedIndex = -1;
-            comboBox1.SelectedIndex = -1;
-            checkedListBoxGender.SelectedIndex = 0;
-            checkedListBoxExtraMural.SelectedIndex = 0;
-        }
 
         private void checkedListBoxExtraMural_ItemCheck(object sender, ItemCheckEventArgs e)
         {
-            for (int i=0; i <checkedListBoxExtraMural.Items.Count; i++)
+            for (int i = 0; i < checkedListBoxExtraMural.Items.Count; i++)
             {
                 if (i != e.Index)
                 {
@@ -412,5 +278,16 @@ namespace StudentManagementSystem
 
         }
 
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            PopulateStudentList();
+
+            NewStudentPanel.Visible = false;
+            EnrollPanel.Visible = false;
+            panel1.Visible = true;
+            panel2.Visible = true;
+            ClearNewStudentForm();
+
+        }
     }
 }

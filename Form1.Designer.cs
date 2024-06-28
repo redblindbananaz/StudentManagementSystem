@@ -74,6 +74,7 @@
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
             NewStudentPanel = new Panel();
+            txtErrors = new TextBox();
             btnCancel = new Button();
             btnSaveNewStudent = new Button();
             groupBox2 = new GroupBox();
@@ -97,7 +98,6 @@
             txtNewFirstName = new TextBox();
             tabPage2 = new TabPage();
             openFileDialog1 = new OpenFileDialog();
-            txtErrors = new TextBox();
             grpStudentDatabase.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvStudents).BeginInit();
             grpStudentDetails.SuspendLayout();
@@ -640,6 +640,16 @@
             NewStudentPanel.TabIndex = 8;
             NewStudentPanel.Visible = false;
             // 
+            // txtErrors
+            // 
+            txtErrors.BackColor = SystemColors.Control;
+            txtErrors.BorderStyle = BorderStyle.None;
+            txtErrors.Font = new Font("Segoe UI", 14F);
+            txtErrors.Location = new Point(21, 340);
+            txtErrors.Name = "txtErrors";
+            txtErrors.Size = new Size(584, 25);
+            txtErrors.TabIndex = 4;
+            // 
             // btnCancel
             // 
             btnCancel.Font = new Font("Segoe UI", 14F);
@@ -649,6 +659,7 @@
             btnCancel.TabIndex = 3;
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += btnCancel_Click;
             // 
             // btnSaveNewStudent
             // 
@@ -883,16 +894,6 @@
             // openFileDialog1
             // 
             openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // txtErrors
-            // 
-            txtErrors.BackColor = SystemColors.Control;
-            txtErrors.BorderStyle = BorderStyle.None;
-            txtErrors.Font = new Font("Segoe UI", 14F);
-            txtErrors.Location = new Point(21, 340);
-            txtErrors.Name = "txtErrors";
-            txtErrors.Size = new Size(584, 25);
-            txtErrors.TabIndex = 4;
             // 
             // Form1
             // 
