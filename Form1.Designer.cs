@@ -97,6 +97,16 @@
             txtNewLastName = new TextBox();
             txtNewFirstName = new TextBox();
             tabPage2 = new TabPage();
+            groupBox6 = new GroupBox();
+            label11 = new Label();
+            linkLabel2 = new LinkLabel();
+            label10 = new Label();
+            linkLabel1 = new LinkLabel();
+            groupBox5 = new GroupBox();
+            textBox3 = new TextBox();
+            label9 = new Label();
+            groupBox4 = new GroupBox();
+            textBox2 = new TextBox();
             openFileDialog1 = new OpenFileDialog();
             grpStudentDatabase.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvStudents).BeginInit();
@@ -109,6 +119,10 @@
             NewStudentPanel.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
+            tabPage2.SuspendLayout();
+            groupBox6.SuspendLayout();
+            groupBox5.SuspendLayout();
+            groupBox4.SuspendLayout();
             SuspendLayout();
             // 
             // checkedListBoxExtraMural
@@ -883,6 +897,10 @@
             // 
             // tabPage2
             // 
+            tabPage2.Controls.Add(groupBox6);
+            tabPage2.Controls.Add(groupBox5);
+            tabPage2.Controls.Add(label9);
+            tabPage2.Controls.Add(groupBox4);
             tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
@@ -890,6 +908,118 @@
             tabPage2.TabIndex = 1;
             tabPage2.Text = "App Info";
             tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // groupBox6
+            // 
+            groupBox6.Controls.Add(label11);
+            groupBox6.Controls.Add(linkLabel2);
+            groupBox6.Controls.Add(label10);
+            groupBox6.Controls.Add(linkLabel1);
+            groupBox6.Font = new Font("Segoe UI", 14F);
+            groupBox6.ForeColor = SystemColors.ControlDarkDark;
+            groupBox6.Location = new Point(12, 609);
+            groupBox6.Name = "groupBox6";
+            groupBox6.Size = new Size(899, 96);
+            groupBox6.TabIndex = 6;
+            groupBox6.TabStop = false;
+            groupBox6.Text = "Links";
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Location = new Point(577, 48);
+            label11.Name = "label11";
+            label11.Size = new Size(109, 25);
+            label11.TabIndex = 3;
+            label11.Text = "My Github: ";
+            // 
+            // linkLabel2
+            // 
+            linkLabel2.AutoSize = true;
+            linkLabel2.Location = new Point(713, 48);
+            linkLabel2.Name = "linkLabel2";
+            linkLabel2.Size = new Size(134, 25);
+            linkLabel2.TabIndex = 2;
+            linkLabel2.TabStop = true;
+            linkLabel2.Text = "View my page:";
+            linkLabel2.LinkClicked += linkLabel2_LinkClicked;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new Point(6, 48);
+            label10.Name = "label10";
+            label10.Size = new Size(112, 25);
+            label10.TabIndex = 1;
+            label10.Text = "Whitecliffe: ";
+            // 
+            // linkLabel1
+            // 
+            linkLabel1.AutoSize = true;
+            linkLabel1.LinkVisited = true;
+            linkLabel1.Location = new Point(124, 48);
+            linkLabel1.Name = "linkLabel1";
+            linkLabel1.Size = new Size(155, 25);
+            linkLabel1.TabIndex = 0;
+            linkLabel1.TabStop = true;
+            linkLabel1.Text = "Click here to visit";
+            linkLabel1.LinkClicked += linkLabel1_LinkClicked;
+            // 
+            // groupBox5
+            // 
+            groupBox5.Controls.Add(textBox3);
+            groupBox5.Font = new Font("Segoe UI", 14F);
+            groupBox5.ForeColor = SystemColors.ControlDarkDark;
+            groupBox5.Location = new Point(12, 527);
+            groupBox5.Name = "groupBox5";
+            groupBox5.Size = new Size(899, 76);
+            groupBox5.TabIndex = 5;
+            groupBox5.TabStop = false;
+            groupBox5.Text = "Developer Information";
+            // 
+            // textBox3
+            // 
+            textBox3.BackColor = SystemColors.Window;
+            textBox3.BorderStyle = BorderStyle.None;
+            textBox3.Location = new Point(6, 31);
+            textBox3.Name = "textBox3";
+            textBox3.ReadOnly = true;
+            textBox3.Size = new Size(887, 25);
+            textBox3.TabIndex = 0;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Segoe UI", 32F, FontStyle.Underline);
+            label9.Location = new Point(172, 6);
+            label9.Name = "label9";
+            label9.Size = new Size(592, 59);
+            label9.TabIndex = 4;
+            label9.Text = "Student Management System:";
+            label9.TextAlign = ContentAlignment.TopCenter;
+            // 
+            // groupBox4
+            // 
+            groupBox4.Controls.Add(textBox2);
+            groupBox4.Font = new Font("Segoe UI", 14F);
+            groupBox4.ForeColor = SystemColors.ControlDarkDark;
+            groupBox4.Location = new Point(12, 68);
+            groupBox4.Name = "groupBox4";
+            groupBox4.Size = new Size(899, 453);
+            groupBox4.TabIndex = 0;
+            groupBox4.TabStop = false;
+            groupBox4.Text = "Application Purpose";
+            // 
+            // textBox2
+            // 
+            textBox2.BackColor = SystemColors.Window;
+            textBox2.BorderStyle = BorderStyle.None;
+            textBox2.Location = new Point(6, 31);
+            textBox2.Multiline = true;
+            textBox2.Name = "textBox2";
+            textBox2.ReadOnly = true;
+            textBox2.Size = new Size(887, 416);
+            textBox2.TabIndex = 0;
             // 
             // openFileDialog1
             // 
@@ -922,6 +1052,14 @@
             groupBox2.PerformLayout();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            tabPage2.ResumeLayout(false);
+            tabPage2.PerformLayout();
+            groupBox6.ResumeLayout(false);
+            groupBox6.PerformLayout();
+            groupBox5.ResumeLayout(false);
+            groupBox5.PerformLayout();
+            groupBox4.ResumeLayout(false);
+            groupBox4.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -995,5 +1133,15 @@
         private Button btnCancel;
         private OpenFileDialog openFileDialog1;
         private TextBox txtErrors;
+        private Label label9;
+        private GroupBox groupBox4;
+        private GroupBox groupBox6;
+        private GroupBox groupBox5;
+        private TextBox textBox2;
+        private TextBox textBox3;
+        private LinkLabel linkLabel1;
+        private Label label10;
+        private Label label11;
+        private LinkLabel linkLabel2;
     }
 }

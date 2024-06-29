@@ -1,4 +1,5 @@
 using System.ComponentModel;
+using System.Diagnostics;
 using StudentManagementSystem.Models;
 
 namespace StudentManagementSystem
@@ -19,6 +20,7 @@ namespace StudentManagementSystem
         public Form1()
         {
             InitializeComponent();
+            InitailizeTextBoxes();
             InitializeStudentData();
             PopulateStudentList();
 
@@ -42,6 +44,12 @@ namespace StudentManagementSystem
         private void Form1_StudentListChanged(object sender, EventArgs e)
         {
             MessageBox.Show("Student List Changed", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        public void InitailizeTextBoxes()
+        {
+            textBox2.Text = "This application is designed to demonstrate the use of Windows Forms elements and event programming.\r\nIt manages a list of students, allowing uers to view/search student records, and also add, edit and delete student.\r\nThe features of this application:Custom Event using the publisher/subscriber pattern. User get notification each time the records are modified upon deletion, creation or on edit\r\nData Validation: The application validates the data entered by the user and provides feedback to the user\r\nThe application showcases various controls such as DataGridView, Tabs, Panel, TextBox, ComboBox, CheckedListBox, Button, etc.\r\nDesign: The application is designed to be user-friendly and intuitive. The user can easily navigate between the different sections of the application.\r\nThe application is designed to be responsive and provide feedback to the user when an action is performed.\r\nThe application demonstrates the use of working with Text files, using FileDialogs to open and save files.\r\n";
+            textBox3.Text = "Sebastien Pernot - 20210862";
         }
 
         public void InitializeStudentData()
@@ -287,6 +295,36 @@ namespace StudentManagementSystem
             panel1.Visible = true;
             panel2.Visible = true;
             ClearNewStudentForm();
+
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
+            try
+            {
+                linkLabel1.LinkVisited = true;
+                Process.Start(new ProcessStartInfo { FileName = @"https://whitecliffe.ac.nz", UseShellExecute = true });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            try
+            {
+                linkLabel2.LinkVisited = true;
+                Process.Start(new ProcessStartInfo { FileName = @"https://github.com/redblindbananaz", UseShellExecute = true });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
 
         }
     }
