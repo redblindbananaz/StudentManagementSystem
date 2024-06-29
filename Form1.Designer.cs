@@ -71,6 +71,9 @@
             panel2 = new Panel();
             EnrollPanel = new Panel();
             groupBox3 = new GroupBox();
+            btnSaveFile = new Button();
+            btnLoadFile = new Button();
+            textBox4 = new TextBox();
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
             NewStudentPanel = new Panel();
@@ -107,13 +110,15 @@
             label9 = new Label();
             groupBox4 = new GroupBox();
             textBox2 = new TextBox();
-            openFileDialog1 = new OpenFileDialog();
+            opnTextFile = new OpenFileDialog();
+            savTextFile = new SaveFileDialog();
             grpStudentDatabase.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvStudents).BeginInit();
             grpStudentDetails.SuspendLayout();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             EnrollPanel.SuspendLayout();
+            groupBox3.SuspendLayout();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             NewStudentPanel.SuspendLayout();
@@ -590,7 +595,6 @@
             // 
             // panel2
             // 
-            panel2.Controls.Add(EnrollPanel);
             panel2.Controls.Add(grpStudentDetails);
             panel2.Location = new Point(1, 449);
             panel2.Name = "panel2";
@@ -600,7 +604,7 @@
             // EnrollPanel
             // 
             EnrollPanel.Controls.Add(groupBox3);
-            EnrollPanel.Location = new Point(-1, 1);
+            EnrollPanel.Location = new Point(0, 450);
             EnrollPanel.Name = "EnrollPanel";
             EnrollPanel.Size = new Size(927, 286);
             EnrollPanel.TabIndex = 3;
@@ -608,13 +612,44 @@
             // 
             // groupBox3
             // 
+            groupBox3.Controls.Add(btnSaveFile);
+            groupBox3.Controls.Add(btnLoadFile);
+            groupBox3.Controls.Add(textBox4);
             groupBox3.Font = new Font("Segoe UI", 14F);
-            groupBox3.Location = new Point(13, 18);
+            groupBox3.Location = new Point(13, 14);
             groupBox3.Name = "groupBox3";
             groupBox3.Size = new Size(898, 253);
             groupBox3.TabIndex = 0;
             groupBox3.TabStop = false;
             groupBox3.Text = "Enrollment File Check:";
+            // 
+            // btnSaveFile
+            // 
+            btnSaveFile.Location = new Point(790, 215);
+            btnSaveFile.Name = "btnSaveFile";
+            btnSaveFile.Size = new Size(100, 32);
+            btnSaveFile.TabIndex = 2;
+            btnSaveFile.Text = "Save";
+            btnSaveFile.UseVisualStyleBackColor = true;
+            btnSaveFile.Click += btnSaveFile_Click;
+            // 
+            // btnLoadFile
+            // 
+            btnLoadFile.Location = new Point(684, 215);
+            btnLoadFile.Name = "btnLoadFile";
+            btnLoadFile.Size = new Size(100, 32);
+            btnLoadFile.TabIndex = 1;
+            btnLoadFile.Text = "Load";
+            btnLoadFile.UseVisualStyleBackColor = true;
+            btnLoadFile.Click += btnLoadFile_Click;
+            // 
+            // textBox4
+            // 
+            textBox4.Location = new Point(8, 31);
+            textBox4.Multiline = true;
+            textBox4.Name = "textBox4";
+            textBox4.Size = new Size(884, 178);
+            textBox4.TabIndex = 0;
             // 
             // tabControl1
             // 
@@ -630,6 +665,7 @@
             // tabPage1
             // 
             tabPage1.BackgroundImageLayout = ImageLayout.None;
+            tabPage1.Controls.Add(EnrollPanel);
             tabPage1.Controls.Add(NewStudentPanel);
             tabPage1.Controls.Add(panel1);
             tabPage1.Controls.Add(label1);
@@ -1021,10 +1057,6 @@
             textBox2.Size = new Size(887, 416);
             textBox2.TabIndex = 0;
             // 
-            // openFileDialog1
-            // 
-            openFileDialog1.FileName = "openFileDialog1";
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -1043,6 +1075,8 @@
             panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
             EnrollPanel.ResumeLayout(false);
+            groupBox3.ResumeLayout(false);
+            groupBox3.PerformLayout();
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
@@ -1131,7 +1165,7 @@
         private GroupBox groupBox3;
         private Button btnSaveNewStudent;
         private Button btnCancel;
-        private OpenFileDialog openFileDialog1;
+        private OpenFileDialog opnTextFile;
         private TextBox txtErrors;
         private Label label9;
         private GroupBox groupBox4;
@@ -1143,5 +1177,9 @@
         private Label label10;
         private Label label11;
         private LinkLabel linkLabel2;
+        private Button btnSaveFile;
+        private Button btnLoadFile;
+        private TextBox textBox4;
+        private SaveFileDialog savTextFile;
     }
 }

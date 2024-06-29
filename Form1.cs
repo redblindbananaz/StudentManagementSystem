@@ -1,5 +1,7 @@
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Diagnostics.Eventing.Reader;
+using System.IO;
 using StudentManagementSystem.Models;
 
 namespace StudentManagementSystem
@@ -325,6 +327,68 @@ namespace StudentManagementSystem
                 MessageBox.Show(ex.Message);
             }
 
+
+        }
+
+        private void btnLoadFile_Click(object sender, EventArgs e)
+        {
+            TextReader tr;
+            String line;
+            opnTextFile.Filter = "Text Files(*.txt)|*.txt|" + "All FIles(*.*)|*.*";
+            opnTextFile.ShowDialog();
+
+            if (opnTextFile.FileName != "")
+            {
+                try
+                {
+                    tr = File.OpenText(opnTextFile.FileName);
+
+                    while (true)
+                    {
+                        line = tr.ReadLine();
+                        if (line != null)
+                        {
+                            textBox4.Text += line + "\r\n";
+                        }
+                        else
+                            return;
+                    }
+
+                    tr.Close();
+
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
+        private void btnSaveFile_Click(object sender, EventArgs e)
+        {
+            TextWriter tw;
+            String line;
+            savTextFile.Filter = "Text Files(*.txt)|*.txt|" + "All FIles(*.*)|*.*";
+            savTextFile.ShowDialog();
+
+            if (savTextFile.FileName != "")
+            {
+                try
+                {
+                    tw = File.CreateText(savTextFile.FileName);
+                    line = textBox4.Text;
+                    foreach (string line in textBox4.Lines)
+                    {
+                        tw.WriteLine(line);
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
 
         }
     }
