@@ -332,7 +332,7 @@ namespace StudentManagementSystem
 
         private void btnLoadFile_Click(object sender, EventArgs e)
         {
-            TextReader tr;
+            TextReader tr = null;
             String line;
             opnTextFile.Filter = "Text Files(*.txt)|*.txt|" + "All FIles(*.*)|*.*";
             opnTextFile.ShowDialog();
@@ -342,19 +342,14 @@ namespace StudentManagementSystem
                 try
                 {
                     tr = File.OpenText(opnTextFile.FileName);
+                    textBox4.Clear();
 
-                    while (true)
+                    while ((line =tr.ReadLine()) !=null)
                     {
-                        line = tr.ReadLine();
-                        if (line != null)
-                        {
+                      
                             textBox4.Text += line + "\r\n";
-                        }
-                        else
-                            return;
+                     
                     }
-
-                    tr.Close();
 
 
                 }
@@ -362,13 +357,16 @@ namespace StudentManagementSystem
                 {
                     MessageBox.Show(ex.Message);
                 }
+                finally
+                {
+                    tr?.Close();
+                }
             }
         }
 
         private void btnSaveFile_Click(object sender, EventArgs e)
         {
-            TextWriter tw;
-            String line;
+            TextWriter tw = null;
             savTextFile.Filter = "Text Files(*.txt)|*.txt|" + "All FIles(*.*)|*.*";
             savTextFile.ShowDialog();
 
@@ -377,16 +375,32 @@ namespace StudentManagementSystem
                 try
                 {
                     tw = File.CreateText(savTextFile.FileName);
-                    line = textBox4.Text;
+    
                     foreach (string line in textBox4.Lines)
                     {
                         tw.WriteLine(line);
                     }
+                    textBox4.Clear();
+                    panel1.Visible = true;
+                    panel2.Visible = true;
+                    NewStudentPanel.Visible = false;
+                    EnrollPanel.Visible = false;
+                    ClearNewStudentForm();
+                    PopulateStudentList();
+
+
+                    tw.Close();
+                    MessageBox.Show("File Saved Successfully", "File Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+
+                   tw?.Close();
                 }
             }
 
