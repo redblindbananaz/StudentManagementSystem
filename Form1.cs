@@ -243,13 +243,18 @@ namespace StudentManagementSystem
             EnrollPanel.Visible = true;
         }
 
+        private int GenerateNewStudentId()
+        {
+            return students.Any() ? students.Max(s=>s.Id) +1 : 1;
+        }
+
         private void btnSaveNewStudent_Click(object sender, EventArgs e)
         {
             //Need to validate the input before saving the new student:
             if (NewStudentInputIsValidated())
             {
                 var newStudent = new Student(
-                    students.Count + 1,
+                    GenerateNewStudentId(),
                     txtNewFirstName.Text,
                     txtNewLastName.Text,
                     int.Parse(txtNewAge.Text),
@@ -261,10 +266,9 @@ namespace StudentManagementSystem
                     checkedListBoxExtraMural.CheckedItems.Contains("Yes")
                     );
 
-                newStudents?.Add(newStudent);
+                students.Add(newStudent);
                 OnStudentListChanged();// Trigger the Custom Event.
 
-                students.Add(newStudent);
                 PopulateStudentList();
 
                 NewStudentPanel.Visible = false;
