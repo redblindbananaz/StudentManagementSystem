@@ -51,7 +51,7 @@ namespace StudentManagementSystem
         // Event handler for the custom event:
         private void Form1_StudentListChanged(object sender, EventArgs e)
         {
-            MessageBox.Show("Student List Changed", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Student List Changed", "Info Notifications:", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         public void InitailizeTextBoxes()
