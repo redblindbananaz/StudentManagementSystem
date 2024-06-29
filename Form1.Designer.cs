@@ -534,6 +534,7 @@
             btnEdit.UseVisualStyleBackColor = true;
             btnEdit.UseWaitCursor = true;
             btnEdit.Visible = false;
+            btnEdit.Click += btnEdit_Click;
             // 
             // btnDelete
             // 

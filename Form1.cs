@@ -17,6 +17,8 @@ namespace StudentManagementSystem
         private List<Student> students;
         private List<Student> newStudents;
         private bool isFormLoaded = false;
+        private bool isEditMode = false;
+        private int editingStudentId = -1;
         private int selectedRowIndex = -1;
         private BindingList<Student> filteredStudents;
         public Form1()
@@ -25,6 +27,10 @@ namespace StudentManagementSystem
             InitailizeTextBoxes();
             InitializeStudentData();
             PopulateStudentList();
+
+            //Configure the checkedListBox:
+            ConfigureCheckedListBox(checkedListBoxGender);
+            ConfigureCheckedListBox(checkedListBoxExtraMural);
 
             //Need to set the selection mode to fullrowselect according to microsoft documentation
             dgvStudents.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -130,6 +136,7 @@ namespace StudentManagementSystem
             {
                 dgvStudents.Rows.Add(student.Id, student.FullName, student.Email, student.ClassName, student.Campus);
             }
+            ClearForm();
         }
 
         public static class BooleanConverter
@@ -180,6 +187,50 @@ namespace StudentManagementSystem
             {
                 MessageBox.Show("Please select a student to delete.", "Delete", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            panel1.Visible = false;
+            NewStudentPanel.Visible = true;
+            groupBox1.Text = "Edit Student";
+            groupBox2.Text = "Previous Student Details:";
+            btnEdit.Enabled = false;
+            btnEdit.Visible = false;
+            btnDelete.Enabled = false;
+            btnDelete.Visible = false;
+
+
+            if (selectedRowIndex >= 0 && selectedRowIndex < dgvStudents.Rows.Count)
+            {
+
+                var selectedRow = dgvStudents.SelectedRows[0];
+                int selectedId = (int)selectedRow.Cells[0].Value;
+                var studentToEdit = students.FirstOrDefault(s => s.Id == selectedId);
+
+                if (studentToEdit != null)
+                {
+                    isEditMode = true;
+                    editingStudentId = selectedId;
+
+                    txtNewFirstName.Text = studentToEdit.FirstName;
+                    txtNewLastName.Text = studentToEdit.LastName;
+                    txtNewAge.Text = studentToEdit.Age;
+                    SetCheckedListBoxSelection(checkedListBoxGender, studentToEdit.Gender);
+                    txtNewPhone.Text= studentToEdit.PhoneNumber;
+                    txtNewEmail.Text= studentToEdit.Email;
+                    comboBoxClass.SelectedItem= studentToEdit.ClassName;
+                    comboBox1.SelectedItem= studentToEdit.Campus;
+                    SetCheckedListBoxSelection(checkedListBoxExtraMural, BooleanConverter.Convert(studentToEdit.ExtraMural));
+                }
+       
+            }
+            else
+            {
+                MessageBox.Show("Selected student is null");
+            }
+
+
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -248,26 +299,78 @@ namespace StudentManagementSystem
             return students.Any() ? students.Max(s=>s.Id) +1 : 1;
         }
 
+        private void ConfigureCheckedListBox(CheckedListBox checkedListBox)
+        {
+            checkedListBox.ItemCheck += (sender, e) =>
+            {
+                if (e.NewValue == CheckState.Checked)
+                {
+                    for (int i = 0; i < checkedListBox.Items.Count; i++)
+                    {
+                        if (i != e.Index)
+                        {
+                            checkedListBox.SetItemChecked(i, false);
+                        }
+                    }
+                }
+            };
+        }
+
+        private string GetCheckedListBoxSelection (CheckedListBox checkedListBox)
+        {
+            return checkedListBox.CheckedItems.Count > 0 ? checkedListBox.CheckedItems[0].ToString() : string.Empty;
+        }
+
+        private void SetCheckedListBoxSelection(CheckedListBox checkedListBox, string selection)
+        {
+            for (int i = 0; i < checkedListBox.Items.Count; i++)
+            {
+                checkedListBox.SetItemChecked(i, checkedListBox.Items[i].ToString() == selection);
+            }
+        }
+            
+
         private void btnSaveNewStudent_Click(object sender, EventArgs e)
         {
             //Need to validate the input before saving the new student:
             if (NewStudentInputIsValidated())
             {
-                var newStudent = new Student(
-                    GenerateNewStudentId(),
-                    txtNewFirstName.Text,
-                    txtNewLastName.Text,
-                    int.Parse(txtNewAge.Text),
-                    checkedListBoxGender.SelectedItem?.ToString(),
-                    txtNewPhone.Text,
-                    txtNewEmail.Text,
-                    comboBoxClass.SelectedItem?.ToString(),
-                    comboBox1.SelectedItem?.ToString(),
-                    checkedListBoxExtraMural.CheckedItems.Contains("Yes")
-                    );
+                if (isEditMode)
+                {
+                    var studentToEdit = students.FirstOrDefault(s => s.Id == editingStudentId);
+                    if (studentToEdit != null)
+                    {
+                        studentToEdit.FirstName = txtNewFirstName.Text;
+                        studentToEdit.LastName = txtNewLastName.Text;
+                        studentToEdit.Age = txtNewAge.Text;
+                        studentToEdit.Gender = GetCheckedListBoxSelection(checkedListBoxGender);
+                        studentToEdit.PhoneNumber = txtNewPhone.Text;
+                        studentToEdit.Email = txtNewEmail.Text;
+                        studentToEdit.ClassName = comboBoxClass.SelectedItem?.ToString();
+                        studentToEdit.Campus = comboBox1.SelectedItem?.ToString();
+                        studentToEdit.ExtraMural = checkedListBoxExtraMural.CheckedItems.Contains("Yes");
 
-                students.Add(newStudent);
-                OnStudentListChanged();// Trigger the Custom Event.
+                        OnStudentListChanged();// Trigger the Custom Event.
+                    }
+                }
+                else
+                {
+                    var newStudent = new Student(
+                        GenerateNewStudentId(),
+                        txtNewFirstName.Text,
+                        txtNewLastName.Text,
+                        int.Parse(txtNewAge.Text),
+                        GetCheckedListBoxSelection(checkedListBoxGender),
+                        txtNewPhone.Text,
+                        txtNewEmail.Text,
+                        comboBoxClass.SelectedItem?.ToString(),
+                        comboBox1.SelectedItem?.ToString(),
+                        checkedListBoxExtraMural.CheckedItems.Contains("Yes")
+                        );
+
+                    students.Add(newStudent);
+                    OnStudentListChanged();// Trigger the Custom Event.
+                }
 
                 PopulateStudentList();
 
@@ -276,6 +379,10 @@ namespace StudentManagementSystem
                 panel1.Visible = true;
                 panel2.Visible = true;
                 ClearNewStudentForm();
+
+                //Reset the flags:
+                isEditMode = false;
+                editingStudentId = -1;
             }
         }
 
