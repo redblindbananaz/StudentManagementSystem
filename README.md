@@ -1,9 +1,10 @@
 # Student Management System
 
-## Description
-The Student Management System is a Windows Forms application designed to manage student records. It allows users to perform CRUD (Create, Read, Update, Delete) operations on student data.
+## Introduction
+The Student Management System is a C# project developed using Windows Forms and the .NET framework. It is designed to mainly manage student data with functionalities to create, read, update, and delete student records.
 
 ## Table of Contents
+- [Program Description](#program-description)
 - [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
@@ -14,19 +15,28 @@ The Student Management System is a Windows Forms application designed to manage 
 - [File Operations](#file-operations)
 - [Development Environment](#development-environment)
 - [Links](#links)
+  
+## Program Description
+
+The application features a user-friendly interface with two main tabs: one for student operations and another for displaying information about the app. The main frame of the application consists of two rectangle panels, one at the top and one at the bottom, for performing actions and displaying details, respectively. The system is designed to be extendable, allowing for future additions such as teachers and classes while maintaining a uniform structure.
 
 ## Features
-- Add new student records
-- Update existing student records
-- Delete student records
-- View the list of all students
+* **Two-tab Interface:** One tab for student operations and another for displaying app information.
+* **Student List:** View all students in the database with a detailed preview of each student’s data.
+* **Search Functionality:** Search for students by name, with notifications if a student is not found.
+* **Edit and Delete:** Edit student details or delete a student record with confirmation dialogs.
+* **Validation:** Comprehensive validation for input fields, ensuring data integrity.
+* **Custom Events:** Notifications for changes in the database.
+* **Text File Operations:** Load and save student data from/to a text file.
+* **App Information:** Display a short description of the application and provide external links for additional information.
 
 ## Installation
 1. Clone the repository:
+   
     ```sh
     git clone https://github.com/redblindbananaz/StudentManagementSystem.git
     ```
-2. Open the project in Visual Studio 2022.
+3. Open the project in Visual Studio 2022.
 
 ## Usage
 1. Run the application from Visual Studio.
@@ -40,20 +50,20 @@ The application uses event-driven programming extensively. Below are some exampl
 
 ### Notify User of changes in database:
 
-
-- Step 1: Declare a Delegate:
   ```
-namespace StudentManagementSystem
-{
 
     public partial class Form1 : Form
     {
-        1. --> //Delegate for the event handler:
+  
+  ----> Delegate for the event handler:
         public delegate void StudentListChangedEventHandler(object sender, EventArgs e);
-        //Declare the event:
+  
+  ----> Declare the event:
         public event StudentListChangedEventHandler StudentListChanged;
 
-        <-- Declaration of variables here -->
+
+        //Declaration of variables here...
+  
         public Form1()
         {
             InitializeComponent();
@@ -63,21 +73,25 @@ namespace StudentManagementSystem
 
             <-- More code here-->
 
-            //Subscribe to the custom event:
+  ---->  Subscribe to the custom event:
             this.StudentListChanged += new StudentListChangedEventHandler(this.Form1_StudentListChanged);
         }
+  
 
-        // Method to raise the custom event:
+  ----> Define a method that checks if there are any subscribers to the event and then raises the event by invoking the delegate.
         protected virtual void OnStudentListChanged()
         {
             StudentListChanged?.Invoke(this, EventArgs.Empty);
         }
 
-        // Event handler for the custom event:
+  ----> Event handler for the custom event:
         private void Form1_StudentListChanged(object sender, EventArgs e)
         {
             MessageBox.Show("Student List Changed", "Info Notifications:", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+  --> Example where the the event gets triggered:
+  
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if (selectedRowIndex >= 0 && selectedRowIndex < dgvStudents.Rows.Count)
@@ -93,8 +107,8 @@ namespace StudentManagementSystem
                     {
                         students.Remove(studentToRemove);
                         PopulateStudentList();
-                        ClearForm();
-                        OnStudentListChanged();
+  here                  ClearForm();
+  --------------------->OnStudentListChanged();
                     }
                 }
             }
@@ -106,63 +120,13 @@ namespace StudentManagementSystem
 
   ```
 
-csharp
-Copy code
-public delegate void MyCustomEventHandler(string message);
-Step 2: Declare the Event
-Declare an event using the delegate.
+### Example Events:
 
-csharp
-Copy code
-public class EventPublisher
-{
-    public event MyCustomEventHandler MyCustomEvent;
-}
-Step 3: Define a Method to Raise the Event
-Define a method that checks if there are any subscribers to the event and then raises the event by invoking the delegate.
+- Button Click Events:
+  
+  -```btnSaveNewStudent_Click```: Handles saving a new student, validating input, and updating the database.
+  -```btnEdit_Click```: Handles editing a selected student, validating input, and updating the database.
 
-csharp
-Copy code
-public class EventPublisher
-{
-    public event MyCustomEventHandler MyCustomEvent;
+- Custom Event:
+  -```StudentDataChanged```: Custom event to notify the user of changes in the database, used in save and delete operations.
 
-    protected virtual void OnMyCustomEvent(string message)
-    {
-        MyCustomEvent?.Invoke(message);
-    }
-}
-Step 4: Subscribe to the Event
-Create a class that subscribes to the event and defines the event handler method.
-
-csharp
-Copy code
-public class EventSubscriber
-{
-    public void Subscribe(EventPublisher publisher)
-    {
-        publisher.MyCustomEvent += HandleCustomEvent;
-    }
-
-    private void HandleCustomEvent(string message)
-    {
-        Console.WriteLine("Event received: " + message);
-    }
-}
-Step 5: Trigger the Event
-Instantiate the publisher and subscriber, subscribe to the event, and trigger the event.
-
-csharp
-Copy code
-class Program
-{
-    static void Main(string[] args)
-    {
-        EventPublisher publisher = new EventPublisher();
-        EventSubscriber subscriber = new EventSubscriber();
-        
-        subscriber.Subscribe(publisher);
-        
-        publisher.OnMyCustomEvent("Hello, World!");
-    }
-}
