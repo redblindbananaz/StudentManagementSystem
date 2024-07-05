@@ -322,7 +322,11 @@ namespace StudentManagementSystem
             panel1.Visible = false;
             panel2.Visible = false;
             NewStudentPanel.Visible = true;
+            groupBox1.Text = "New Student";
             EnrollPanel.Visible = true;
+            CLearErrorStyle();
+            ClearForm();
+            ClearNewStudentForm();
         }
 
         private int GenerateNewStudentId()
