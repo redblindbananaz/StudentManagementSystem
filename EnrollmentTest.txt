@@ -1,6 +1,7 @@
 This is a test file for the enrollment function testing:
 Can delete: Testing the save function=> {...} ( if {THIS} is empty then succefull testing) 
-Or writte something here: Somthing
+Or writte something here: This is a new message that is saved in this file
+
 
 
 

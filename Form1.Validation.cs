@@ -12,6 +12,7 @@ namespace StudentManagementSystem
         {
             bool isValid = true;
             CLearErrorStyle();
+            StringBuilder errorMessage = new StringBuilder();
 
             if (string.IsNullOrWhiteSpace(txtNewFirstName.Text))
             {
@@ -25,10 +26,11 @@ namespace StudentManagementSystem
                 label4.ForeColor = Color.Red;
                 isValid = false;
             }
-            if (string.IsNullOrWhiteSpace(txtNewAge.Text))
+            if (!int.TryParse(txtNewAge.Text, out _))
             {
                 txtNewAge.BackColor = SystemColors.Info;
                 label5.ForeColor = Color.Red;
+                errorMessage.AppendLine("* Age must be numeric");
                 isValid = false;
             }
             if (checkedListBoxGender.CheckedItems.Count == 0)
@@ -70,7 +72,7 @@ namespace StudentManagementSystem
 
             if (!isValid)
             {
-                txtErrors.Text = "* Please enter the followed required fields";
+                txtErrors.Text = "* Please enter the followed required fields" + errorMessage.ToString().Trim();
                 txtErrors.ForeColor = Color.Red;
             }
             return isValid;

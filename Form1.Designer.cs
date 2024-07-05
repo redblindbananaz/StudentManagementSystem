@@ -1066,6 +1066,8 @@
             Controls.Add(tabControl1);
             Controls.Add(btnNewStudent);
             Controls.Add(btnExit);
+            MaximumSize = new Size(939, 848);
+            MinimumSize = new Size(939, 848);
             Name = "Form1";
             Text = "Student Management System";
             grpStudentDatabase.ResumeLayout(false);
