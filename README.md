@@ -12,6 +12,7 @@ The Student Management System is a C# project developed using Windows Forms and 
 - [Data Types](#data-types)
 - [Development Environment](#development-environment)
 - [File Operations](#file-operations)
+- [Screenshots](#screenshots)
 
   
 ## Program Description
@@ -183,3 +184,17 @@ This application was developed on a Mac M1 using VMware to run Windows 11 and Vi
 ## File Operations
 
 An ```enrollment.txt``` file is included in this repository to test loading and saving student data. The application can work with other text files on a Windows machine.
+
+## ScreenShots
+
+Screenshot 1:
+
+![Image](SMS1.png)
+
+Screenshot 2:
+
+![Image](SMS2.png)
+
+Screenshot 3:
+
+![Image](SMS3.png)
