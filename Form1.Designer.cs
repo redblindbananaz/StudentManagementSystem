@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             checkedListBoxExtraMural = new CheckedListBox();
             grpStudentDatabase = new GroupBox();
             txtErrorSearch = new TextBox();
@@ -202,8 +202,8 @@
             // 
             dgvStudents.AllowUserToAddRows = false;
             dgvStudents.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dgvStudents.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dgvStudents.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             dgvStudents.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvStudents.Columns.AddRange(new DataGridViewColumn[] { Id, FullName, Email, Class, Campus });
             dgvStudents.Location = new Point(8, 80);
@@ -817,12 +817,11 @@
             // 
             checkedListBoxGender.BackColor = SystemColors.Control;
             checkedListBoxGender.BorderStyle = BorderStyle.None;
-            checkedListBoxGender.CheckOnClick = true;
             checkedListBoxGender.Font = new Font("Segoe UI", 12F);
             checkedListBoxGender.FormattingEnabled = true;
             checkedListBoxGender.HorizontalScrollbar = true;
             checkedListBoxGender.IntegralHeight = false;
-            checkedListBoxGender.Items.AddRange(new object[] { "Male", "Female", "Other" });
+            checkedListBoxGender.Items.AddRange(new object[] { "Female", "Male", "Other" });
             checkedListBoxGender.Location = new Point(306, 175);
             checkedListBoxGender.MultiColumn = true;
             checkedListBoxGender.Name = "checkedListBoxGender";
