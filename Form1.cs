@@ -3,6 +3,37 @@ using System.Diagnostics;
 using System.Diagnostics.Eventing.Reader;
 using System.IO;
 using StudentManagementSystem.Models;
+/*
+ * STUDENT MANAGEMENT SYSTEM
+ * Student ID : 20210862
+ * 
+ * DESCRIPTION:
+ * This Windows Form application manages student information through a GUI interface With 2 tabs.
+ * 
+ * FEATURES:
+ * - Tab1: Student Operations
+ *      - Displays a list of students in a DataGridView with details preview.
+ *      - Search functionality with notifications for non-existent students.
+ *      - Edit and Delete functionality with confirmation dialogs, appears when a student is selected.
+ *      - Edit: Modify student details in a separate panel, with validation and feedback.
+ *      - Delete: Remove a student from the list with confirmation dialog.
+ *      - New Student: Add a new student to the list with validation and feedback.
+ *  
+ *  - Tab2: Application Information
+ *      - Disaply app description, author information and external links to the campus website and GitHub.
+ *      
+ * ADDITIONAL FUNCTIONALITIES:
+ *      - Custom events for notifying data changes.
+ *      - Error handling and validation for user input.
+ *      - File I/O operations to load , modify and save text files.
+ *      - Age validation to ensure numeric input.
+ * 
+ * This project includes a seperate validation file and a model folder for future expansion ( ex. Teacher class, etc...)
+ * 
+ * NOTE:
+ *  - This project have been created on a MacM1 using VMWare with Windows 11 and Visual Studio 2022 and Git.
+ *      
+ */
 
 namespace StudentManagementSystem
 {
