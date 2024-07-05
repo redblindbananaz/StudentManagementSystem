@@ -10,9 +10,9 @@ The Student Management System is a C# project developed using Windows Forms and 
 - [Usage and Functionalities](#usage-and-functionalities)
 - [Event-Driven Programming](#event-driven-programming)
 - [Data Types](#data-types)
-- [File Operations](#file-operations)
 - [Development Environment](#development-environment)
-- [Links](#links)
+- [File Operations](#file-operations)
+
   
 ## Program Description
 
@@ -160,7 +160,7 @@ The application uses event-driven programming extensively. Below are some exampl
   -```btnEdit_Click```: Handles editing a selected student, validating input, and updating the database.
 
 - Custom Event:
-  -```StudentDataChanged```: Custom event to notify the user of changes in the database, used in save and delete operations.
+  -```StudentDataChanged```: Custom event to notify the user of changes in the database, used in ```save``` and ```delete``` operations.
 
 ## Data Types
 
@@ -173,3 +173,13 @@ The application uses event-driven programming extensively. Below are some exampl
   - ```List<Student>```: Used to store and manage the list of students.
   - ```CheckedListBox, ComboBox, TextBox, Panel, etc.```: Used for various UI elements in the application.
 
+
+Primitive data types, such as integers, floating-point numbers, characters, and booleans, store their values directly in memory locations allocated on the stack. They are straightforward and operate with a fixed size, making them efficient for storing simple data. On the other hand, reference data types, like objects, arrays, and strings, store references to their data in stack memory, while the actual data resides in heap memory. This distinction allows reference types to handle more complex data structures and dynamic memory allocation efficiently. 
+
+## Development Environment
+
+This application was developed on a Mac M1 using VMware to run Windows 11 and Visual Studio 2022. Windows Forms is not supported on Visual Studio for Mac, making the use of a virtual machine necessary. All safeguards were implemented using Git and GitHub, ensuring no direct access to the virtual hard drive outside the virtual environment.
+
+## File Operations
+
+An ```enrollment.txt``` file is included in this repository to test loading and saving student data. The application can work with other text files on a Windows machine.
